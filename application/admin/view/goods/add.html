@@ -1,0 +1,217 @@
+{extend name="master" /}
+{block name="content"}
+  <!-- content start -->
+  <div class="admin-content">
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf">
+        <a href="{:url('index')}" >
+          <small class="am-text-primary am-text-lg">商品列表</small>
+        </a>
+        / <a href="{:url('add')}" ><strong>添加商品</strong></a>
+      </div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+          <div class="am-btn-toolbar am-fl">
+            <div class="am-btn-group am-btn-group-xs">
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+            </div>
+
+            <div class="am-form-group am-margin-left am-fl">
+              <select>
+                <option value="option1">所有类别</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="am-u-md-3 am-cf">
+        <div class="am-fr">
+          <div class="am-input-group am-input-group-sm">
+            <input type="text" class="am-form-field">
+                <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <form action="" method="POST" class="form-horizontal" >
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">商品管理</h3>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <label  class="col-sm-2 control-label">商品名称</label>
+                <div class="col-sm-10">
+                  <input type="text" name="title" value="{$goods['title']|default=''}" class="form-control"  placeholder="请输入商品名称">
+                </div>
+              </div>
+              <div class="form-group">
+                <label  class="col-sm-2 control-label">商品价格</label>
+                <div class="col-sm-10">
+                  <input type="text" name="price" value="" class="form-control"  placeholder="请输入商品价格">
+                </div>
+              </div>
+              <div class="form-group">
+                <label  class="col-sm-2 control-label">商品价库存</label>
+                <div class="col-sm-10">
+                  <input type="text" name="total" value="" class="form-control"  placeholder="请输入商品库存">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-sm-2 control-label">所属栏目</label>
+                <div class="col-sm-10">
+                  <select name="cid"  class="form-control">
+                      <option value="0"> 请选择 </option>
+                      {foreach $cateData as $key=>$vo }
+                      <option value="{$vo.id}"> {$vo.title} </option>
+                      {/foreach}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label  class="col-sm-2 control-label">列表图</label>
+                <div class="col-sm-10">
+                  <div class="input-group">
+                    <input class="form-control" name="thumb" readonly="" value="">
+                    <div class="input-group-btn">
+                      <button id="thumb" class="btn btn-default" type="button">选择图片</button>
+                    </div>
+                  </div>
+                  <div class="input-group" style="margin-top:5px;">
+                    <img src="/static/images/nopic.jpg" class="img-responsive img-thumbnail" width="150">
+                    <em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片"
+                        onclick="removeImg(this)">×</em>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label  class="col-sm-2 control-label">商品图册</label>
+                <div class="col-sm-10">
+                  <div class="input-group">
+
+                    <!---->
+                    <div class="layui-upload">
+                      <button type="button" class="layui-btn" id="pics">选择图片上传</button>
+                      <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                        预览图：
+                        <div class="layui-upload-list" id="box" style="padding-left: 35px;"></div>
+                      </blockquote>
+                    </div>
+
+                    <!---->
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label  class="col-sm-2 control-label">商品详情</label>
+                <div class="col-sm-10">
+                  <textarea class="layui-textarea" id="content" name="content" style="display: none"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default" id="app">
+            <div class="panel-heading">
+              <h3 class="panel-title">商品规格</h3>
+            </div>
+            <div class="panel-body">
+              <div class="panel panel-default" v-for="(v,k) in specs">
+                <i @click="del(k)" class="layui-icon layui-icon-close layui-anim layui-anim-rotate layui-anim-loop" style="font-size: 30px; color: #1E9FFF;cursor: pointer"></i>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">规格</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" v-model="v.spec_tit" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">库存</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" v-model="v.total" placeholder="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button @click.prevent="add" class="btn btn-success btn-xs">添加规格</button>
+            </div>
+            <textarea  name="specs" id="" cols="30" rows="10">{{specs}}</textarea>
+          </div>
+          <button class="btn btn-primary">提交</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+
+
+<script>
+    /**
+     * 上传和编辑器
+     */
+    layui.use(['upload','layedit'], function() {
+        var $ = layui.jquery
+            , upload = layui.upload
+            , layedit = layui.layedit;
+        layedit.set({
+            uploadImage: {
+                url:"{:url('upload')}" //接口url
+            }
+        });
+        //建立编辑器
+        layedit.build('content',{
+            //height: 180 //设置编辑器高度
+        });
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#thumb'
+            ,url: "{:url('upload')}"
+            ,done: function(res){
+                $('input[name=thumb]').val(res.data.src);
+                $('.img-thumbnail').attr('src',res.data.src);
+            }
+        });
+        //多图片上传
+        upload.render({
+            elem: '#pics'
+            ,url: "{:url('upload')}"
+            ,multiple: true
+            ,size:2000
+            ,done: function(res){
+                var img = '<img style="width: 50px" src="'+res.data.src+'" alt=""><input type="hidden" name="pics[]"  value="'+res.data.src+'">';
+                $('#box').append(img);
+            }
+        });
+    })
+</script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            specs:[],
+        },
+        methods:{
+            add(){
+                var html = {spec_tit:'',total:''};
+                this.specs.push(html);
+            },
+            del(k){
+                this.specs.splice(k,1);
+            }
+        }
+    });
+</script>
+{/block}

@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>收获地址</title>
+    <link rel="shortcut icon" href="/static/login/ico/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="/static/index/goshop_files/common.css">
+    <link type="text/css" rel="stylesheet" href="/static/index/goshop_files/cartBase.css">
+    <link type="text/css" rel="stylesheet" href="/static/index/goshop_files/base.css">
+    <link type="text/css" rel="stylesheet" href="/static/index/goshop_files/style.css">
+    <link type="text/css" rel="stylesheet" href="/static/index/goshop_files/dialogBox.css">
+    <link charset="utf-8" rel="stylesheet" href="/static/index/goshop_files/tips.css">
+    <link charset="utf-8" rel="stylesheet" href="/static/index/goshop_files/dialog.css">
+    <script src="/static/index/js/jquery.min.js"></script>
+    <script src="/layui/layui.js"></script>
+    <!--结算页面样式-->
+    <script src="/city/distpicker/dist/distpicker.js"></script>
+
+
+</head>
+<body id="mainframe">
+<div class="order_header wrap">
+    <h1 class="clearfix">
+        <img class="logo" src="/static/images/logo.png" alt="" style="width: 73px;height: 49px;">
+        <img class="logo_txt" src="/static/images/logo_txt.png" alt="" style="width: 153px;padding-top: 19px;">
+    </h1>
+</div>
+
+<div class="website_tip wrap none">
+    <div class="website_tip_rel">
+        <p></p>
+    </div>
+</div>
+
+<div id="container">
+    <div id="content" class="w">
+        <div class="orderInfo-tip hide">
+            <span class="wicon"></span>
+            <span class="ftx-03"> </span>
+            <span class="cls-btn">x</span>
+        </div>
+        <div class="same_module consignee_adr wrap">
+            <div class="same_module_rel">
+                <div class="mod_rel_head clearfix">
+                    <span class="mr_tit">收货信息</span>
+                    <a class="mr_ctrlbtn" href="javascript:;" onclick="show_address()">新建地址</a>
+                </div>
+                <div class="consign_rel_cont">
+
+                    <ul id="consignee-list" class="clearfix" style="height: 120px;">
+                        {foreach $address as $v}
+                        <li id="consignee_index_634024385" class="consignee-item item-selected jdd"
+                            consigneeid="634024385">
+                            <div class="total_info clearfix op-btns" id="consignee_index_div_634024385">
+                                <i class="fl sprite_odr  adr_icon"></i>
+                                <span class="fl tot_name">{$v['shop_name']}</span>
+                                {if $v['is_default']==1}
+                                <em class="init_adrs" style="display: block;">默认</em>
+                                {/if}
+                                <span class="fr tot_edit " style="display: block">
+            <a href="#none" class="ftx-05 edit-consignee" >编辑</a>
+            <a href="#none" class="ftx-05 edit-consignee" onclick="del({$v['id']},this)">删除</a>
+        </span>
+                            </div>
+                            <div class="detail_info dizhi">
+                                <p><span>{$v['phone']}</span></p>
+                                <p>{$v['province']}{$v['county']}{$v['city']} </p>
+                                <p>{$v['area']}</p>
+                            </div>
+                            <div class="sprite_odr is_choose"></div>
+                            <!-- 地址升级隐藏域信息 -->
+                            <input type="hidden" id="hid_upArea_634024385" consigneeid="634024385" isoldaddress="false"
+                                   ismapping="false" newprovinceid="0" newcityid="0" newcountyid="0" newtownid="0"
+                                   newprovincename="" newcityname="" newcountyname="" newtownname="" address_type="1"
+                                   addressname="12345678901" name="111" email="a**@qq.com" mobile="123****8901" phone=""
+                                   idcard="" address="12345678901" ceshi1="18A670DB01AAA71DF6C7D9169D070BAD">
+                        </li>
+                        <input type="hidden" id="isNull" value="">
+                        <input type="hidden" id="hidden_consignees_size" value="1">
+                        {/foreach}
+                    </ul>
+                    <style>
+                        .consign_rel_cont ul li.abcd{
+                            border: 1px solid red;!important;
+                        }
+                    </style>
+                    <script>
+                        $('.jdd').click(function () {
+                            $(this).addClass('abcd');
+                            $(this).siblings('li').removeClass('abcd');
+                        })
+                    </script>
+
+                    <script>
+                        /**
+                         * 删除数据
+                         * @param obj
+                         * @param id
+                         */
+                        function del(id,obj){
+                            layui.use('layer', function() { //独立版的layer无需执行这一句
+                                var  layer = layui.layer; //独立版的layer无需执行这一句
+                                //询问框
+
+                                var _obj = $(obj);
+                                console.log(_obj);
+                                layer.confirm('确认要删除吗', {
+                                    btn: ['确认', '取消'] //按钮
+                                }, function () {
+                                    $.post("{:url('index/goshop/del')}",{id:id},function(res){
+                                        if(res.code==1){
+                                            _obj.parents('li').remove();
+                                            layer.msg(res.msg,{icon:1});
+                                        }else{
+                                            layer.msg(res.msg,{icon:3});
+                                        }
+                                    },'json');
+
+                                });
+
+
+                            });
+
+
+                            /**
+                             * 默认选中
+                             */
+
+
+                        }
+
+
+                    </script>
+
+                    <a class="cng_more" href="#none" onclick="consignAdrSlide()"
+                       style="display: none;"><span>更多地址</span><em class="sprite_odr"></em></a>
+                </div>
+            </div>
+        </div>
+        <div id="shipAndSkuInfo">
+            <div class="same_module pay_method wrap">
+                <div class="same_module_rel">
+                    <div class="mod_rel_head clearfix">
+                        <span class="mr_tit">支付方式</span>
+                    </div>
+                    <div class="paymethd_rel_cont" id="payment-list">
+                            <span style="cursor: pointer;">
+				                <a class=" payment-item item-selected cur online-payment ">
+											微信支付
+                                    <i class="sprite_odr"></i>
+				                </a>
+			                </span>
+                    </div>
+                </div>
+            </div>
+            <div class="same_module presell_list delivery_list wrap">
+                <div class="same_module_rel">
+                    <div class="step-tit mod_rel_head clearfix">
+                        <span class="mr_tit">配送清单</span>
+                        <a href="{:url('index/lists/index')}" id="cartRetureUrl"
+                           class="return-edit ftx-05 mr_ctrlbtn">返回购物车修改</a>
+                    </div>
+                    <div class="step-cont" id="skuPayAndShipment-cont">
+                        <!--添加商品清单 -->
+                        <div class="shopping-lists" id="shopping-lists">
+                            <!--定义大商品清单LIST-->
+                            <div class="delivery_rel_cont">
+                                <div class="deliv_items clearfix">
+                                    <div class="de_item_sub de_itm_infolist" id="11">
+
+                                        <div class="del_warp_box">
+                                            <div class="del_il_box">
+                                                <div class="dib_tit clearfix">
+                                                    <b class="fl">配送方式</b>
+                                                    <div class="fr"><em class="fr">自营中小件</em>
+                                                        <div class="dib_dropiconbox"><i class="sprite_odr"></i>
+                                                            <div class="goods_list" style="display: none;">
+                                                                <i class="triggle_arrow"></i>
+                                                                <div class="good_listwrap">
+                                                                    <div class="good_listwrap">
+                                                                        <ul>
+                                                                            <li class="clearfix">
+                                                                                <div class="pic"><img
+                                                                                        src="/static/index/goshop_files/5aac75d5N88393a80.jpg"
+                                                                                        width="38" height="38"></div>
+                                                                                <div class="name">一品巷子 休闲零食 膨化食品
+                                                                                    美式薯条番茄味20g/袋
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a id="_jdpay" class="dib_style curr"
+                                                   onclick="doSwithTab(&#39;jd_other&#39;)">
+                                                    第三方配送<i class="sprite_odr"></i>
+                                                </a>
+                                            </div>
+                                            <!--如果京东第三方配送中有大家电-->
+                                            <!--以下为第三方配送-->
+                                            <!--如果是SOP快递或者是京东中小件商品，但是不支持配送，则采用第三方配送-->
+                                            <!--sop大件入仓配送-->
+                                        </div>
+                                    </div>
+
+                                    <div class="goods-list de_item_sub de_itm_prodlist">
+                                        <div class="de_ib_box">
+                                            <!--购物车单品商品-->
+                                            <!--一般套装商品-->
+                                            <!--满返套装商品-->
+                                            <!--满赠套装商品-->
+                                            <!--配送方式-->
+                                            <div class="dib_tit">
+                                                <b class="vendor_name_h" id="0">商家： 1号店自营</b>
+                                            </div>
+                                            {foreach $goshop['goods'] as $v}
+                                            <div class="dib_con">
+                                                <ul class="clearfix">
+                                                    <li class="clearfix sku_info" goods-id="4507959" sx-type="0">
+                                                        <input type="hidden" id="goodsIds" name="goodsIds"
+                                                               value="4507959:2">
+                                                        <div class="clearfix">
+                                                            <div class="dc_pic">
+                                                                <a target="_blank"
+                                                                   href="{:url('index/content/index')}">
+                                                                    <img src="{$v['options']['thumb']}" alt=""
+                                                                         style="width: 55px;height: 55px;">
+                                                                </a>
+                                                            </div>
+                                                            <div class="dc_info">
+                                                                <p class="inf_name">
+                                                                    <a class="main_sku_href"
+                                                                       href="{:url('index/content/index')}"
+                                                                       target="_blank">
+                                                                        {$v['name']}
+                                                                    </a>
+                                                                </p>
+                                                                <p class="inf_tip clearfix">
+                                                                    <i class="sprite_odr disable"></i><span>不支持7天无理由退货</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="dc_price">
+                                                                 <span>
+                                                                     ￥ {$v['price']}
+                                                                 </span>
+
+                                                            </div>
+
+                                                            <div class="dc_nums">
+                                                                <em>x</em>{$goshop['total_rows']}
+                                                            </div>
+                                                            <div id="pre-state" class="dc_tips p-state" skuid="4507959">
+                                                                <!--货品数量：-->
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <!--赠品-->
+                                                    <!--满赠套装结束-->
+                                                </ul>
+                                            </div>
+                                            {/foreach}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span style="font-size: 24px;color: #ff6c6c;position: relative;top: 78px;left: 4px;">商品总金额：</span>
+                                    <span style="font-size: 24px;color: #303030;position: relative;top: 78px;left: 4px;">￥{$v['total']}</span>
+                                </div>
+                            </div>
+
+                            <!-------------------------------结算------------------------------>
+                            <!-- 结算栏 开始-->
+                            <style>
+                                .captcha_bh {
+                                    position: absolute;
+                                    bottom: 70px;
+                                    width: 990px;
+                                }
+
+                                .captcha_bh .captcha_img {
+                                    width: 125px;
+                                    height: 50px;
+                                    float: right;
+                                    border: 1px solid gray;
+                                }
+
+                                .captcha_bh .captcha_input {
+                                    float: right;
+                                }
+
+                                .captcha_bh .captcha_input input {
+                                    width: 130px;
+                                    height: 50px;
+                                }
+
+                                #captcha_error {
+                                    float: initial;
+                                    height: 20px;
+                                    color: red;
+                                }
+                            </style>
+                            <div class="settling_column_bar">
+                                <div class="pay_tools_bar   special_tool_bar  tools_bar_bottom">
+                                    <div class="captcha_bh none">
+
+                                        <div class="captcha_input">
+                                            <p id="captcha_error"></p><!--验证码校验错误提示-->
+                                            <input type="text" placeholder="请输入验证码">
+                                        </div>
+                                        <div style="padding-top: 20px;">
+                                            <img class="captcha_img"
+                                                 src="https://trade.yhd.com/shopping/order/getOrderInfo.do"
+                                                 style="cursor:pointer " onclick="this.src=this.src+&#39;&amp;&#39;"
+                                                 title="换一张">
+                                        </div>
+                                    </div>
+                                    <div class="pay_tools_inner clearfix">
+                                        <div class="pay_tli_adr">
+                                            <p class="adr_name_tel"><span class="pta_name"></span><span
+                                                    class="pta_tel"></span></p>
+                                            <p class="adr_detail"><i class="sprite_odr"> </i><span
+                                                    class="area_Name">      </span>
+                                            </p>
+                                        </div>
+                                        {foreach $goshop['goods'] as $v}
+                                        <div class="pay_tli_price">
+                                            <ul class="clearfix">
+                                                <li class="fl prod_jr">
+                                                    <div class="ptp_tit"><span>商品单价</span></div>
+                                                    <div id="promotionPrice" class="ptp_con" data-jdbeannum="0">
+                                                        <em>¥</em>{$v['price']}
+                                                    </div>
+                                                </li>
+                                                <li class="fl prod_yh">
+                                                    <div class="ptp_tit"><span>优惠</span></div>
+                                                    <div class="ptp_con"><em>¥</em>0.00</div>
+                                                </li>
+                                                <li class="fl prod_dy">
+                                                    <div class="ptp_tit"><span>抵扣</span></div>
+                                                    <div class="ptp_con" id="dicouAmountBar"><em>¥</em>0.00</div>
+                                                </li>
+                                                <li class="fl prod_yf">
+                                                    <div class="ptp_tit clearfix">
+                                                        <div class="fr freig_ctrl">
+                                                            <em class="sprite_odr freight-icon"></em>
+                                                        </div>
+                                                        <span class="fr">运费</span>
+                                                    </div>
+                                                    <div class="ptp_con" id="freightPriceId"><i
+                                                            class="freight-icon"></i><em>免费</em>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <a class="order pay_btn_smbit payment_all sbmit_btn" href="javascript:;"
+                                           >提交订单</a>
+                                        <div class="pay_tli_count">
+                                            <p class="ptc_tips">还需支付</p>
+                                            <p id="payPrice" class="ptc_count"><em>¥</em><b>{$v['total']}</b></p>
+                                        </div>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--预售-->
+
+                            <div id="trade-nostock-recommendation-render" style="display:none"></div>
+
+                            <div class="orderConfirm_dialog no_stock_dialog">
+                                <div class="od_cont">
+                                    <div class="orderConfirm_dialog_tit">
+                                        <h3 class="tit">商品无货</h3>
+                                        <span class="sprite_odr close_icon pop_close"></span>
+                                    </div>
+                                    <div class="orderConfirm_dialog_relbox">
+                                        <div class="distribution_tips clearfix">
+                                            <div class="distribution_tips_text">以下商品无货，请返回购物车修改。</div>
+                                        </div>
+                                        <div class="distribution_list">
+                                            <table width="100%" cellspacing="0" cellpadding="0">
+                                                <thead>
+                                                <tr>
+                                                    <th width="210">商品名称</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- 按钮 -->
+                                        <div class="dialog_btn">
+                                            <a href="https://cart.yhd.com/cart.do"
+                                               class="btn save_btn ">返回购物车</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <!--shopping-lists 结束-->
+                    </div>
+                    <div class="add_remark hide" id="orderRemarkItem">
+                        <p class="a_rmk_tit">添加订单备注:</p>
+                        <div class="a_rmk_con clearfix">
+                            <input class="fl" maxlength="45" id="remarkText" onkeyup="cleanSpelChar(this)"
+                                   placeholder="限45个字（定制类商品，请将购买需求在备注中做详细说明）" type="text">
+                            <span class="fl">提示：请勿填写有关支付、收货、发票方面的信息</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="zhezhao" onclick="close_address()"
+     style="width: 100%;height: 100%;background-color: rgb(0, 0, 0);;overflow: hidden;position: absolute;top: 0;left: 0;opacity: 0.15; display: none;"></div>
+<!--------新增地址------------>
+<div class="ui-dialog1"
+     style="width: 690px;display: none; position: absolute; overflow: hidden; top: 81px; left: 496.5px;">
+    <div class="ui-dialog-title" style="width: 774px;"><span
+            style="font-size: 16px;font-weight: 300;">新增收货人信息</span></div>
+    <div class="ui-dialog-content" style="height: 536px; width: 773px; overflow: hidden;">
+
+        <div class="form-new new_build_list" id="consignee-form" name="consignee-form">
+            <form action="{:url('index/goshop/address')}" method="post" id="address">
+            <!-- 收货人start -->
+                <div class="item"  style="line-height:43px;margin-bottom:28px;">
+                     <span class="label" style="padding: 4px 57px 3px;width: 105px;line-height: 38px;">
+                         <em>*</em>收货人
+                     </span>
+                    <div class="fl">
+                        <input type="text" class="itxt"  name="shop_name">
+                    </div>
+                </div>
+
+            <!-- 收货人end -->
+
+            <!-- 手机号码start -->
+                <div class="item"  style="line-height:43px;margin-bottom:28px;">
+                     <span class="label" style="padding: 4px 57px 3px;width: 105px;line-height: 38px;">
+                         <em>*</em>手机
+                     </span>
+                    <div class="fl">
+                        <input type="text" class="itxt" name="phone" >
+                    </div>
+                </div>
+            <!-- 手机号码end -->
+
+            <!-- 所在地区start -->
+            <div class="item mt10" id="area_div" style="margin-bottom: 24px;">
+                <span class="label"style="line-height: 26px;padding: 4px 65px 3px;width: 87px;"><em>*</em>所在地区</span>
+                <div class="fl">
+                    <span id="span_area"></span>
+                    <!--地址选择开始-->
+
+                    <div id="zl-target" data-toggle="distpicker">
+                        <select name="province" data-province="北京市"></select>
+                        <select name="city" data-city="北京城区"></select>
+                        <select name="county" data-district="朝阳区"></select>
+                    </div>
+
+                    <!--<hr>-->
+                    <!--<div class="content-address">-->
+                                    <!--&lt;!&ndash;城市联动&ndash;&gt;-->
+                                    <!--<select name="province" id="area1"></select>-->
+                                    <!--<select name="" id="area2"></select>-->
+                                    <!--<select name="" id="area3"></select>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;添加地址按钮&ndash;&gt;-->
+                        <!--<a href="javascript:;" class="new-address"></a>-->
+                        <!--&lt;!&ndash;添加新地址结束&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--地址选择结束-->
+                    <span class="error-msg" id="area_div_error"></span>
+                </div>
+
+            <!-- 所在地区end -->
+
+            <!-- 详细地址start -->
+            <div class="item" style="margin-bottom: 24px;">
+                <span class="label" style="line-height: 110px;padding: 4px 65px 3px;width: 87px;"><em>*</em>详细地址</span>
+                <div class="fl">
+                    <!--span id="areaNameTxt"></span-->
+                    <input type="text" class="itxt itxt02" id="con_address" name="area" maxlength="50" value="" tabindex="6" style="margin-top: 45px;">
+                    <span class="error-msg" id="address_div_error"></span>
+                </div>
+            </div>
+            <!-- 详细地址end -->
+                <style>
+                    .tijiao{
+                        background: #ff6c6c;
+                        color: #f0f0f0;
+                        border: 1px solid #ff6c6c;
+                        width: 150px;
+                        height: 40px;
+                        cursor: pointer;
+                    }
+                </style>
+            <div class="item mt20" style="margin: 24px 180px;">
+                <span class="label">&nbsp;</span>
+                <div class="fl">
+                    <button class="tijiao" type="submit">保存收货人信息</button>
+                    <div class="loading loading-1" style="display:none"><b></b>正在提交信息，请等待！
+                    </div>
+                </div>
+                <div style="display:none"><input id="consignee_form_reset" name=""type="reset"></div>
+            </div>
+            </div>
+         </form>
+        </div>
+
+    </div>
+    <a href="javascript:;" title="关闭"><span class="ui-icon ui-icon-delete"></span></a>
+
+</div>
+
+<!--点击新增地址弹出模态框-->
+<script>
+    $('#zl-target').distpicker();
+    //点击新增地址弹出模态框
+    function show_address() {
+        $('.zhezhao').show();
+        $('.ui-dialog1').show();
+    }
+
+    //点击关闭新增地址模态框
+    function close_address() {
+        $('.zhezhao').hide();
+        $('.ui-dialog1').hide();
+    }
+
+    //异步做提交
+
+
+
+
+        //新增地址提交
+        $(function () {
+            $('.tijiao').click(function () {
+
+                var shop_name = $('input[name="shop_name"]');
+
+                $.post("", data, function (res) {
+
+                })
+            })
+        })
+
+
+    //订单提交
+        $(function () {
+            $('.order').click(function () {
+                var dizhi=$('.abcd').find('.dizhi').f
+                ind('p').text();
+
+                console.log(dizhi);
+                var data = {
+                    total:"{$goshop['total_price']}",
+                    id:'2',
+                    address:dizhi,
+                };
+                // console.log(data);return;
+                $.post("{:url('index/pay/addOrders')}", data, function (res) {
+                    // location.href = "{:url('index/pay/index')}" + '?number=&total='
+                })
+            })
+        })
+</script>
+
+<!--  /widget/footer/footer.tpl -->
+<div id="footer">
+    <div class="bordertop_solid mt20 pb10">
+        <div class="sitemap2">
+            <ul>
+                <li><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">沪ICP备16050468号</a>
+                </li>
+                <li class="gray ml5 mr5">|</li>
+                <li>
+                    <a href="http://d7.yihaodianimg.com/N09/M07/BD/7B/ChEi11kJnKaAJQMrAAK-LnhML4o60600.jpg"
+                       target="_blank">营业执照</a></li>
+            </ul>
+        </div>
+        <div class="copyright">Copyright© 1号店网上超市 2007-2017， All Rights Reserved</div>
+    </div>
+</div>
+<div id="loadFunBox" class="loadFunBox"
+     style="display: none; padding-bottom: 2194px; margin-bottom: 2194px;">
+    <iframe class="loadFunMarsk" width="2000" height="2194" border="0" style="opacity: 0;"
+            src="/static/index/goshop_files/saved_resource.html"></iframe>
+    <div id="loadIcoFun" class="loadIcoFun loadingYhd"></div>
+</div>
+<!-- footer -->
+
+<div class="orderConfirm_dialog delete_address_dialog"
+     style="margin-left: -174px; top: 300px; display: none;">
+    <div class="od_cont">
+        <div class="orderConfirm_dialog_tit">
+                                        <span class="sprite_odr close_icon pop_close"
+                                              onclick="$(&#39;.delete_address_dialog&#39;).hide();"></span>
+        </div>
+        <div class="orderConfirm_dialog_relbox">
+            <div class="sprite_odr exclamation_tips_icon"></div>
+            <div class="delete_tips_text">确认删除该地址？</div>
+            <!-- 按钮 -->
+            <div class="dialog_btn">
+                <a href="https://trade.yhd.com/shopping/order/getOrderInfo.do#none"
+                   onclick="$(&#39;.delete_address_dialog&#39;).hide();"
+                   class="btn white_btn pop_close">取消</a>
+                <a href="https://trade.yhd.com/shopping/order/getOrderInfo.do#none"
+                   onclick="delete_Consignee($(&#39;.delete_address_dialog&#39;).data(&#39;consignee-id&#39;))"
+                   class="btn save_btn pop_close">确认删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  异常提示 -->
+<div class="orderConfirm_dialog error_message_dialog">
+    <div class="od_cont">
+        <div class="orderConfirm_dialog_tit">
+            <span class="sprite_odr close_icon pop_close"></span>
+        </div>
+
+        <div class="orderConfirm_dialog_relbox">
+
+            <div class="sprite_odr exclamation_tips_icon"></div>
+
+            <div class="switch_tips_text error_message_dialog_text">
+            </div>
+
+            <!-- 按钮 -->
+            <div class="dialog_btn">
+                <a href="javascript:;" class="btn save_btn pop_close">确认</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="popup_mask" style="height: 100%;"></div>
+
+<!-- footer end -->
+
+
+</body>
+</html>

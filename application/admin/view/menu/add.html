@@ -1,0 +1,88 @@
+{extend name="master" /}
+{block name="content"}
+  <!-- content start -->
+  <div class="admin-content">
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><a href="{:url('index')}" ><small class="am-text-primary am-text-lg">栏目列表</small></a> / <a href="{:url('add')}" ><strong>栏目添加</strong></a></div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+          <div class="am-btn-toolbar am-fl">
+            <div class="am-btn-group am-btn-group-xs">
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+            </div>
+
+            <div class="am-form-group am-margin-left am-fl">
+              <select>
+                <option value="option1">所有类别</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="am-u-md-3 am-cf">
+        <div class="am-fr">
+          <div class="am-input-group am-input-group-sm">
+            <input type="text" class="am-form-field">
+                <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <form action="" method="POST" class="form-horizontal" role="form">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">栏目管理</h3>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <label for="" class="col-sm-2 control-label">栏目名称</label>
+                <div class="col-sm-10">
+                  <input type="text" name="title" value="{$menu['title']|default=''}" class="form-control" id="" placeholder="请输入栏目名称">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-sm-2 control-label">所附栏目</label>
+                <div class="col-sm-10">
+                  <select name="category_id" id="inputID" class="form-control">
+                    <option value="0"> -- 顶级栏目 --</option>
+                    {volist name="cateData" id="vo"}
+                    <option {if in_array($vo.id,$son_ids)}disabled{/if}   {if condition="isset($menu['category_id']) && ($menu['category_id']==$vo.id)"}selected{/if} value="{$vo.id}"> {$vo.title} </option>
+                    {/volist}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-sm-2 control-label">是否为封面栏目</label>
+                <div class="col-sm-10">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="is_home" value="1">是
+                    </label>
+                    <label>
+                      <input type="radio" name="is_home" value="2" checked>否
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary">提交</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+{/block}

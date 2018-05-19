@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <script src="/static/index/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/index/cart_files/css/index.css"/>
+    <link rel="stylesheet" href="/static/index/css/bootstrap.css">
+    <script src="/static/index/js/bootstrap.js"></script>
+    {css href="/layui/css/layui.css" /}
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="/layer/layer.js"></script>
+    <script src="/static/index/cart_files/js/cart_config.js"></script>
+
+    <title>我的购物车-1号店,只为更好的生活</title>
+    <link rel="shortcut icon" href="/static/login/ico/favicon.ico">
+
+
+    <!--css start-->
+    <link href="/static/index/cart_files/css/global_site_simple.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/index/cart_files/css/cart_main.css" rel="stylesheet" type="text/css"/>
+    <!--css end-->
+
+
+
+</head>
+
+<body id="comParamId" data-param='{"globalPageCode":"-1","currPageId":"-1"}'>
+
+<div class="hd_header_wrap">
+    <div class="hd_top_bar">
+        <div class="wrap clearfix">
+            <a href="//www.yhd.com" class="hd_topbar_home">
+                <i class="hd_iconfont">&#xe623;</i>
+                <span>1号店首页</span>
+            </a>
+
+            <div class="hd_indxProvce hd_has_child" id="headerSelectProvince"
+                 clstag="pageclick|keycount|global_201709226|1">
+                <a class="hd_topbar_city" id="currProvince" href="javascript:void(0);">
+                    <i class="hd_iconfont">&#xe621;</i>
+                    <span>送货地址：</span><em></em>
+                </a>
+
+                <div class="hd_city_select hd_city_opacity" style="display: none" id="hd_city_select"
+                     data-hot="2817,上海市,2&&2816,北京市,1&&1601,广州市,19&&1607,深圳市,19&&904,南京市,12&&1213,杭州市,15&&1381,武汉市,17&&1930,成都市,22&&48131,重庆市,4&&988,苏州市,12&&51035,天津市,3&&1116,合肥市,14&&1233,温州市,15&&984,无锡市,12&&1158,宁波市,15&&978,常州市,12">
+                    <a href="javascript:;" class="hd_city_close">×</a>
+
+                    <div class="hd_cur_city_wrap clearfix">
+                        <span class="hd_cur_city">搜索城市：</span>
+                        <div class="hd_city_search">
+                            <div class="hd_city_input">
+                                <em class="hd_iconfont"></em>
+                                <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入城市名称">
+                                <span class="hd_citys_close">x</span>
+                            </div>
+                            <div class="hd_city_suggest" style="display: none;">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--热门城市-->
+                    <div class="hd_hot_city_wrap clearfix">
+                        <em class="hd_hotcity_icon"></em>
+                        <span class="hd_hot_city">热门城市：</span>
+                        <div class="hd_hotcity_list clearfix">
+                        </div>
+                    </div>
+                    <!--按字母查找-->
+                    <div class="hd_letter_search  clearfix">
+                        <p class="hd_letter_tit">按字母查找</p>
+                        <div class="hd_city_initial clearfix">
+                        </div>
+                    </div>
+                    <div class="hd_city_list" id="hd_city_list_context">
+                        <ul>
+                            <li class="clearfix">
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hd_topbar_right">
+                <ul>
+                    <li id="global_unlogin">
+                        <div class="hd_unlogin">
+                            <span class="hd_hi">Hi,请</span>
+                            <a href="https://passport.yhd.com/passport/login_input.do" class="hd_login_link"
+                               clstag="pageclick|keycount|global_201709226|2">登录&nbsp;</a>
+                            <a href="https://passport.yhd.com/passport/register_input.do" class="hd_regist_link"
+                               clstag="pageclick|keycount|global_201709226|3">&nbsp;注册</a>
+                        </div>
+                    </li>
+                    <li id="global_login" class="hd_has_child" style="display:none" data-type="2017"
+                        clstag="pageclick|keycount|global_201709226|4">
+                        <div class="hd_login">
+                            <span class="hd_hi">Hi,</span>
+                            <a href="//home.yhd.com/myyhdindex/index.do" target="_blank" class="hd_login_name">__nickName__</a>
+                            <a href="//vip.yhd.com" target="_blank"
+                               class="hd_vip hd_vip__gradeStyle__">__gradeDesc__</a>
+                            <i class="hd_iconfont">&#xe627;</i>
+                        </div>
+                        <div class="hd_user_privilege">
+                            <a href="javascript:;" class="hd_login_out">退出</a>
+                            <div class="clearfix">
+
+                            </div>
+                            <div class="hd_privilege_tit"><span>我可尊享<em>5</em>项特权</span></div>
+                            <div class="hd_privilege_wrap hd_privilege_slide">
+                                <a href="javascript:;" class="prev_btn hd_iconfont"></a>
+                                <div class="hd_privilege clearfix">
+                                    <div class="hd_privilege_list" style="left: -60px; margin-left: 0px;">
+
+                                    </div>
+                                </div>
+                                <a href="javascript:;" class="next_btn hd_iconfont"></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li clstag="pageclick|keycount|global_201709226|5">
+                        <div class="hd_menu hd_notice" id="hdUserMsg" style="display: none" data-cfg="1">
+                            <a href="//edm.yhd.com/pcMsg/myMessage.action;" rel="nofollow"
+                               target='_blank'>我的消息&nbsp;(<em
+                                    class="hd_has_num">0</em>)</a>
+                        </div>
+                    </li>
+                    <li clstag="pageclick|keycount|global_201709226|6">
+                        <div class="hd_menu">
+                            <a href="//home.yhd.com/order/toOrderList.do" target="_blank" rel="nofollow"><i
+                                    class="hd_iconfont">&#xe612;</i>我的订单</a>
+                        </div>
+                    </li>
+                    <li class="hd_has_child" clstag="pageclick|keycount|global_201709226|7">
+                        <div class="hd_menu">
+                            <a href="//cms.yhd.com/cms/view.do?topicId=43" target="_blank">客户服务</a>
+                            <i class="hd_iconfont">&#xe627;</i>
+                        </div>
+                        <div class="hd_menu_list">
+                            <a href="//home.yhd.com/order/toOrderList.do" target="_blank" title="包裹跟踪">包裹跟踪</a>
+                            <a href="//rma.yhd.com/return/returnApplyList.do" target="_blank" title="在线退换货">在线退换货</a>
+                        </div>
+                    </li>
+                    <li class="hd_has_child">
+                        <div class="hd_title">
+                            <a href="javascript:;"><i class="iconfont180315">&#xe62a;</i>APP下载</a>
+                        </div>
+                        <div class="hd_qrcode_bg">
+                            <div class="triangle"></div>
+                            <p>扫描二维码</p>
+                            <p>下载1号店APP</p>
+                            <a href="//app.yhd.com" target="_blank">
+                                <img src="/static/index/cart_files/picture/qryhd.png"/>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="yhd_cart_content">
+
+    <!--商品展示 start-->
+    <script id="cart_main_body_dot" type="text/x-dot-template"></script>
+    <div id="cart_main_body" data-tpa="CART_BODY">
+
+        <div id="content">
+            <form action="{:url('index/goshop/index')}" method="post" id="cart_wu">
+
+                {if $cart}
+                <div class="car main">
+                    <div class="carshop">
+                        <div class="cartitle">
+                            <div class="carname" style="width: 55%">商品名称</div>
+                            <div class="carmoney" style="width: 10%">单价</div>
+                            <div class="carnum" style="width: 15%">数量</div>
+                            <div class="carcount" style="width: 10%">小计</div>
+                            <div class="carhandle" style="width: 10%">操作</div>
+                        </div>
+                        {foreach $cart['goods'] as $k=>$v}
+                        <div class="shopcontent">
+
+                            <div class="shopname" style="width: 55%">
+                                <div class="carimg" style="margin-top: 10px;">
+                                    <a href=""><img src="{$v['options']['thumb']}"/></a>
+                                </div>
+                                <p style="margin-top: 34px;">
+                                    <a href="#">{$v['name']}</a>
+                                    <span>{$v['options']['spec']}</span>
+                                </p>
+                            </div>
+                            <div class="shopmoney" style="width: 10%;margin-left:-25px;"><span>{$v['price']}</span>元</div>
+                            <div class="shopnum" sid="{$k}" style="width: 15%">
+
+                                <a href="javascript:;" class="num_l" style="text-decoration: none;font-size: 24px;line-height: 25px">-</a>
+                                <input type="text" value="{$v['num']}" name="num"/>
+                                <a href="javascript:;" class="num_r" style="text-decoration: none;font-size: 22px;line-height: 25px">+</a>
+                            </div>
+                            <div class="shopcount" style="width: 10%;margin-left: 30px;font-size: 20px;color:#303030;font-weight: 200;"><span id="zl-xiaoji-{$k}">{$v['total']}</span>元</div>
+                            <div class="shophandle" style="width: 10%;margin-left: -25px;"><span>x</span></div>
+                        </div>
+                        {/foreach}
+
+                    </div>
+                    <div class="jiesuan">
+                        <div class="jixu"><a href="">继续购物</a></div>
+                        <div class="gongji">共计<span id="zl-gongji">{$cart['total_rows']}</span>件商品</div>
+                        <div class="heji">合计<span id="zl-heji">{$cart['total_price']}</span></div>
+                        <style>
+                            .car .jiesuan .gou a{
+                                display: block;
+                                width: 200px;
+                                text-align: center;
+                                color: #fff;
+                                line-height: 60px;
+                                background: #36aa3f;
+                                border: none;
+                                cursor: pointer;
+                            }
+
+                        </style>
+
+
+                        {if session('id')}
+                        <div class="gou"><button href="{:url('index/goshop/index')}" type="submit" class="btn btn-danger">去结算</button></div>
+                        {else/}
+                        <div class="gou"><button href="{:url('index/login/index')}" type="submit" class="btn btn-danger">去结算</button></div>
+                        <!--<div class="gou"><input type="submit" value="去结算" onclick="window.location.href('{:url(\'index/login/index\')}')"></div>-->
+                        <!--<div class="gou"><a href="{:url('index/login/index')}">去结算</a></div>-->
+
+                        {/if}
+                    </div>
+                </div>
+                {else/}
+                <div class="empty">
+                <div class="no_prod">
+                <div class="img_wrap" style="text-align: center;padding: 17px;margin: 0 -64px;">
+                    <img src="/static/index/cart_files/picture/offline.gif" alt="" style="width: 300px;height: 300px;">
+                </div>
+                    <div class="info" style="padding-top: 1px;
+                                        position: relative;
+                                         top: 98px;
+                                         left: 59px;">
+
+                        <p>购物车还是空的呢，快去采购吧~<br>或者登录查看之前加入的商品。</p>
+                        <div class="btn_box">
+                            <a href="" class="confirm" clstag="pageclick|keycount|cart_201709267|6">登录</a>
+                            <a href="/" class="cancel" clstag="pageclick|keycount|cart_201709267|7">去逛逛</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                </div>
+                    {/if}
+
+            </form>
+
+<!------------------购物车加减------------------------------>
+            <script>
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+               $(function () {
+                  //购买数量,减
+                  $('.num_l').on('click',function(){
+                      //1.抓到元素值
+                      var num=$(this).siblings('input').val();
+                      //2.自减
+                      num--;
+                      //3.再把值写会原来位置
+                      $(this).siblings('input').val(num);
+                      var sid = $(this).parents('.shopnum').attr('sid');
+                      //alert(sid);
+                      var data={
+                          num:$(this).siblings('input').val(),
+                          sid:sid,
+                      }
+                      $.post("{:url('index/cart/updateCart')}",data,function (res) {
+                          var xiaoji = res.xiaoji;
+                          var total_rows = res.total_rows;
+                          var total_price = res.total_price;
+                          $('#zl-xiaoji-'+sid).text(xiaoji);
+                          $('#zl-heji').text(total_price);
+                          $('#zl-gongji').text(total_rows);
+                          //console.log(res);
+                      },'json')
+                  });
+                   //购买数量,加
+                   $('.num_r').on('click',function(){
+                       var res=$(this).parent().find('.shopnum').text();
+                       // alert(res);
+                       // var _this=$(this);
+                           var num=$(this).siblings('input').val();
+                           num++;
+                           $(this).siblings('input').val(num);
+                           // alert(num);
+                          var sid = $(this).parents('.shopnum').attr('sid');
+                           var data={
+                               num:$(this).siblings('input').val(),
+                               sid:sid,
+                           }
+                           // alert(res);
+                           $.post("{:url('index/cart/updateCart')}",data,function (res) {
+                               var xiaoji = res.xiaoji;
+                               var total_rows = res.total_rows;
+                               var total_price = res.total_price;
+                               $('#zl-xiaoji-'+sid).text(xiaoji);
+                               $('#zl-heji').text(total_price);
+                               $('#zl-gongji').text(total_rows);
+                               // alert(sid);
+                               // console.log(res);
+                               // location.reload();
+                           },'json')
+
+                   });
+
+                   //-------删除购物车------------
+
+                $('.shophandle span').click(function(){
+                    $(this).closest('.shopcontent').remove();
+                    var sid= $(this).parents('.shophandle').siblings('.shopnum').attr('sid')
+                    console.log(sid);
+                    var data={
+                        sid:sid,
+                    };
+
+                    $.post("{:url('index/cart/del')}",data,function (res) {
+                        // console.log(res);
+                    },'json')
+                });
+               })
+            </script>
+
+
+
+        </div>
+
+        <!-- 空购物车-->
+
+        <!-- 空态 end -->
+        <div class="pop_serial_gift"></div>
+        <!--content end-->
+
+    </div>
+    <!--js start-->
+    <!--无页面级头部js时, 全局头部js下移-->
+    <script type="text/javascript" src="//img.yihaodianimg.com/cart/global/js/global_simple_top.js?175bf59"
+            charset="utf-8"></script>
+    <script type="text/javascript" src="//img.yihaodianimg.com/cart/shopping/pc/js/cart_config.js?175bf59"
+            charset="utf-8"></script>
+    <script type="text/javascript" src="//st.360buyimg.com/sso/synccookiepc.js?175bf59" charset="utf-8"></script>
+    <!-- foot include start -->
+    <div class="ft_wrap">
+        <div id="globalBottomBrowseRelated"></div>
+        <div class="wrap ft_footer_service clearfix" id="footerIcon">
+            <a target="_blank">
+                <img alt="" src="/static/index/cart_files/picture/cgqi0lwskgmadbnsaaapzvcsh3e68900.jpg"/>
+                <b>正品保障</b>
+                <span>正品行货 放心选购</span>
+            </a>
+            <a target="_blank">
+                <img alt="" src="/static/index/cart_files/picture/chebulwsk4iada_aaaam544hhn818600.jpg"/>
+                <b>满86包邮</b>
+                <span>满86元 免运费</span>
+            </a>
+            <a target="_blank">
+                <img alt="" src="/static/index/cart_files/picture/cgqiz1wsli-adao3aaan5b_ut2i80100.jpg"/>
+                <b>售后无忧</b>
+                <span>7天无理由退货</span>
+            </a>
+            <a target="_blank">
+                <img alt="" src="/static/index/cart_files/picture/chei11wsyiyalbbiaaan9leek5m33200.jpg"/>
+                <b>准时送达</b>
+                <span>收货时间由你做主</span>
+            </a>
+        </div>
+
+        <div class="wrap ft_service_link clearfix">
+            <div id="bottomHelpLinkId" class="ft_help_list clearfix" data-tpa="YHD_GLOBAl_FOOTER_HELP">
+                <dl>
+                    <dt>新手入门</dt>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=12" target="_blank">购物流程</a></dd>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=17" target="_blank">会员制度</a></dd>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=38" target="_blank">订单查询</a></dd>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=36" target="_blank">发票制度</a></dd>
+                    <dd><a href="//seo.yhd.com/sitelink/sitemap.html" target="_blank">网站地图</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>支付方式</dt>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=25" target="_blank">货到付款</a></dd>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=26" target="_blank">网上支付</a></dd>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=28" target="_blank">礼品卡支付</a></dd>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=29" target="_blank">其它支付</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>配送服务</dt>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=21" target="_blank">配送进度查询</a></dd>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=20" target="_blank">商品验货与签收</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>售后保障</dt>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=31" target="_blank">退换货政策</a></dd>
+                    <dd><a href="//cms.yhd.com/cms/view.do?topicId=43" target="_blank">联系客服</a></dd>
+                </dl>
+            </div>
+            <!--footer 二维码 begin -->
+            <div class="ft_code_wrap clearfix" data-tpa="YHD_GLOBAl_HEADER_MOBILE" id="footerQRcode">
+                <div class="ft_mobile_code clearfix">
+
+                    <p>APP更优惠</p>
+                    <a href="//app.yhd.com" target="_blank">
+                        <img src="/static/index/cart_files/picture/qryhd.png" alt="APP更优惠二维码"/>
+                    </a>
+
+                </div>
+                <div class="ft_mobile_code clearfix">
+
+                    <p>加微信查订单</p>
+                    <img src="/static/index/cart_files/picture/5a2798bbn479da3df.jpg" alt="加微信查订单二维码"/>
+
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <p class="ft_footer_link">
+            </p>
+
+            <p class="ft_footer_link">
+                <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备16050468号</a>
+                |
+                <a href="//cms.yhd.com/cms/view.do?topicId=16" target="_blank">经营证照</a>
+                |
+                <a href="//d9.yihaodianimg.com/N10/M05/00/A9/ChEi2lkQGRaAfaeeAAIhVwT2TYo18400.jpg"
+                   target="_blank">互联网药品信息服务资格证</a>
+                |
+                <a target="_blank">违法和不良信息举报电话：0527-88100253</a>
+                |
+                <a href="//d9.yihaodianimg.com/N11/M04/76/1C/ChEwoVnfFfeAfzKUAAg9urXNqaA12000.jpg"
+                   target="_blank">沪B2-20170039</a>
+                |
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010502002939"
+                   target="_blank">沪公网安备 31010502002939号</a>
+                |
+                <a href="//seo.yhd.com/sitelink/sitelink.html" target="_blank">友情链接</a>
+
+            </p>
+
+            <p>Copyright© 1号店网上超市 2007-2017，All Rights Reserved</p>
+
+            <small id="footerbanner2LazyLoad" class="ft_pic_link">
+                <a href="http://net.china.com.cn/index.htm" target="_blank">
+                    <img alt="" src="/static/index/cart_files/picture/cgqcr1pqy1caf7vaaabdexsieym24800.jpg">
+                </a>
+
+                <a href="http://shwg.dianping.com/index.html" target="_blank">
+                    <img alt="" src="/static/index/cart_files/picture/chei1vcfpl2ac1t8aaanfrefjlw97300.jpg">
+                </a>
+
+                <a href="http://www.shjbzx.cn" target="_blank">
+                    <img alt="" src="/static/index/cart_files/picture/chei2lh171kajrglaaall_uzt0e75600.jpg">
+                </a>
+
+                <a href="https://search.szfw.org/cert/l/CX20150608010268010812" target="_blank">
+                    <img alt="" src="/static/index/cart_files/picture/chei1fyxhcoavk_waaal2r2-yfo10200.jpg">
+                </a>
+
+                <a href="https://ss.knet.cn/verifyseal.dll?sn=e13050631010040492h5mq000000&ct=df&a=1&pa=500267"
+                   target="_blank">
+                    <img alt="" src="/static/index/cart_files/picture/cgqcrlpytqcaslhxaaad82je0ea31000.png">
+                </a>
+
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010502002939"
+                   target="_blank">
+                    <img alt="" src="/static/index/cart_files/picture/5a706bb1ne3eec0dd.png">
+                </a>
+
+            </small>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var jaq = jaq || [];
+        jaq.push(['account', 'JA2017_111805']); //站点编号
+        jaq.push(['domain', 'yhd.com']); //站点域名
+        (function () {
+            var ja = document.createElement('script');
+            ja.type = 'text/javascript';
+            ja.async = true;
+            ja.src = '//wl.jd.com/joya.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ja, s);
+        })();
+    </script>
+    <!-- foot include end -->
+</div>
+</body>
+</html>

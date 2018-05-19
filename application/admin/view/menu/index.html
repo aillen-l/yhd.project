@@ -1,0 +1,138 @@
+{extend name="master" /}
+{block name="content"}
+  <!-- content start -->
+  <div class="admin-content">
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf">
+        <a href="{:url('index')}" >
+          <strong class="am-text-primary am-text-lg">栏目列表</strong>
+        </a> /
+        <a href="{:url('add')}" >
+          <small>栏目添加</small></a></div>
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+          <div class="am-btn-toolbar am-fl">
+            <div class="am-btn-group am-btn-group-xs">
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
+              <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+            </div>
+
+            <div class="am-form-group am-margin-left am-fl">
+              <select>
+                <option value="option1">所有类别</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="am-u-md-3 am-cf">
+        <div class="am-fr">
+          <div class="am-input-group am-input-group-sm">
+            <input type="text" class="am-form-field">
+                <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--------------------栏目列表开始----------------------->
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <form class="am-form">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">栏目管理</h3>
+          </div>
+          <div class="panel-body">
+            <table class="am-table am-table-striped am-table-hover table-main">
+
+              <thead>
+              <tr>
+                <th>编号</th>
+                <th>栏目名称</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr>
+                {volist name="cateData" id="vo"}
+                <td>{$vo.id}</td>
+                <td>{$vo._title|raw}</td>
+
+                <td>
+                  <div class="btn-group btn-group-xs">
+                    <a href="{:url('add',['id'=>$vo.id])}" class="btn btn-primary">编辑</a>
+                    <button onclick="del(this,{$vo.id})" type="button" class="btn btn-danger">删除</button>
+                  </div>
+                </td>
+              </tr>
+              {/volist}
+              </tbody>
+            </table>
+          </div>
+        </div>
+          <!-------------------栏目列表结束----------------------->
+
+       <div class="am-cf">
+        <div class="am-fr">
+    <ul class="am-pagination">
+      <li class="am-disabled"><a href="#">«</a></li>
+      <li class="am-active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">»</a></li>
+    </ul>
+  </div>
+</div>
+          <hr />
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+
+<script>
+    /**
+     * 删除数据
+     * @param obj
+     * @param id
+     */
+    function del(obj,id) {
+        layui.use('layer', function() { //独立版的layer无需执行这一句
+            var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+            //询问框
+            //layer弹出层参数参考：http://www.layui.com/doc/modules/layer.html
+            layer.confirm('确定删除数据？',{
+                title:'友情提示',//标题，类型：String/Array/Boolean，默认：'信息'
+                icon:3,//图标，类型：Number，默认：-1（信息框）/0（加载层）
+                anim:4,//弹出动画，类型：Number，默认：0
+                btn: ['确定','取消'] //按钮，类型：String/Array，默认：'确认'
+            }, function(){
+                    $.post("{:url('del')}",{id:id},function(res){
+                        if(res.code){
+                            $(obj).parents('tr').remove();
+                            layer.msg(res.msg,{icon:1});
+                        }else{
+                            layer.msg(res.msg,{icon:3});
+                        }
+                    },'json');
+
+            })
+            })
+    }
+</script>
+{/block}

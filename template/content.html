@@ -1,0 +1,1936 @@
+<!DOCTYPE >
+<html >
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>详情页-1号店</title>
+    <link rel="shortcut icon" href="/static/login/ico/favicon.ico">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="/static/index/js/jquery.min.js"></script>
+    <!--css start-->
+    <link href="/static/index/content_files/global_site_base.css" rel="stylesheet" type="text/css">
+    <link href="/static/index/content_files/productDetail.css" rel="stylesheet" type="text/css">
+    <!--css end-->
+
+    <!--js end-->
+    <link rel="stylesheet" href="/static/index/css/bootstrap.css">
+    <script src="/static/index/js/bootstrap.js"></script>
+    {css href="/layui/css/layui.css" /}
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="/layer/layer.js"></script>
+
+</head>
+<body id="comParamId">
+<div class="hd_header_wrap">
+    <!-- top_bar base -->
+    <div class="hd_top_bar">
+        <div class="wrap clearfix">
+            <a href="http://tpl.aillen.top" class="hd_topbar_home">
+                <i class="hd_iconfont"></i>
+                <span>1号店首页</span>
+            </a>
+
+            <div class="hd_indxProvce hd_has_child" id="headerSelectProvince">
+                <a class="hd_topbar_city" id="currProvince" href="javascript:void(0);">
+                    <i class="hd_iconfont"></i>
+                    <span>送货地址：</span><em>上海</em>
+                </a>
+                <div class="hd_city_select" style="display: none" id="hd_city_select">
+                    <a href="javascript:;" class="hd_city_close">×</a>
+                    <div class="hd_cur_city_wrap clearfix">
+                        <span class="hd_cur_city">搜索城市：</span>
+                        <div class="hd_city_search">
+                            <div class="hd_city_input">
+                                <em class="hd_iconfont"></em>
+                                <input placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入城市名称" type="text">
+                                <span class="hd_citys_close">x</span>
+                            </div>
+                            <div class="hd_city_suggest" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                    <!--热门城市-->
+                    <div class="hd_hot_city_wrap clearfix">
+                        <em class="hd_hotcity_icon"></em>
+                        <span class="hd_hot_city">热门城市：</span>
+                        <div class="hd_hotcity_list clearfix"><a href="javascipt:;" data-cityid="2817"
+                                                                 data-provinceid="2">上海市</a><a href="javascipt:;"
+                                                                                               data-cityid="2816"
+                                                                                               data-provinceid="1">北京市</a><a
+                                href="javascipt:;" data-cityid="1601" data-provinceid="19">广州市</a><a href="javascipt:;"
+                                                                                                     data-cityid="1607"
+                                                                                                     data-provinceid="19">深圳市</a><a
+                                href="javascipt:;" data-cityid="904" data-provinceid="12">南京市</a><a href="javascipt:;"
+                                                                                                    data-cityid="1213"
+                                                                                                    data-provinceid="15">杭州市</a><a
+                                href="javascipt:;" data-cityid="1381" data-provinceid="17">武汉市</a><a href="javascipt:;"
+                                                                                                     data-cityid="1930"
+                                                                                                     data-provinceid="22">成都市</a><a
+                                href="javascipt:;" data-cityid="48131" data-provinceid="4">重庆市</a><a href="javascipt:;"
+                                                                                                     data-cityid="988"
+                                                                                                     data-provinceid="12">苏州市</a><a
+                                href="javascipt:;" data-cityid="51035" data-provinceid="3">天津市</a><a href="javascipt:;"
+                                                                                                     data-cityid="1116"
+                                                                                                     data-provinceid="14">合肥市</a><a
+                                href="javascipt:;" data-cityid="1233" data-provinceid="15">温州市</a><a href="javascipt:;"
+                                                                                                     data-cityid="984"
+                                                                                                     data-provinceid="12">无锡市</a><a
+                                href="javascipt:;" data-cityid="1158" data-provinceid="15">宁波市</a><a href="javascipt:;"
+                                                                                                     data-cityid="978"
+                                                                                                     data-provinceid="12">常州市</a>
+                        </div>
+                    </div>
+                    <!--按字母查找-->
+                    <div class="hd_letter_search clearfix">
+                        <p class="hd_letter_tit">按字母查找</p>
+                        <div class="hd_city_initial clearfix"><a href="javascript:;">A</a><a href="javascript:;">B</a><a
+                                href="javascript:;">C</a><a href="javascript:;">D</a><a href="javascript:;">E</a><a
+                                href="javascript:;">F</a><a href="javascript:;">G</a><a href="javascript:;">H</a><a
+                                href="javascript:;">J</a><a href="javascript:;">K</a><a href="javascript:;">L</a><a
+                                href="javascript:;">M</a><a href="javascript:;">N</a><a href="javascript:;">P</a><a
+                                href="javascript:;">Q</a><a href="javascript:;">R</a><a href="javascript:;">S</a><a
+                                href="javascript:;">T</a><a href="javascript:;">W</a><a href="javascript:;">X</a><a
+                                href="javascript:;">Y</a><a href="javascript:;">Z</a></div>
+                    </div>
+                    <div class="hd_city_list" id="hd_city_list_context">
+                        <ul>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">A</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="2744"
+                                                        data-provinceid="31">阿勒泰地区</a><a href="javascipt:;"
+                                                                                         data-cityid="2189"
+                                                                                         data-provinceid="24">安顺市</a><a
+                                        href="javascipt:;" data-cityid="1140" data-provinceid="14">安庆市</a><a
+                                        href="javascipt:;" data-cityid="579" data-provinceid="8">鞍山市</a><a
+                                        href="javascipt:;" data-cityid="2070" data-provinceid="22">阿坝州</a><a
+                                        href="javascipt:;" data-cityid="2675" data-provinceid="31">阿克苏地区</a><a
+                                        href="javascipt:;" data-cityid="2476" data-provinceid="27">安康市</a><a
+                                        href="javascipt:;" data-cityid="891" data-provinceid="11">阿拉善盟</a><a
+                                        href="javascipt:;" data-cityid="3970" data-provinceid="26">阿里地区</a><a
+                                        href="javascipt:;" data-cityid="468" data-provinceid="7">安阳市</a><a
+                                        href="javascipt:;" data-cityid="15945" data-provinceid="31">阿拉尔市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">B</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="2816" data-provinceid="1">北京</a><a
+                                        href="javascipt:;" data-cityid="1090" data-provinceid="13">滨州市</a><a
+                                        href="javascipt:;" data-cityid="2723" data-provinceid="31">博尔塔拉州</a><a
+                                        href="javascipt:;" data-cityid="2180" data-provinceid="24">毕节市</a><a
+                                        href="javascipt:;" data-cityid="1132" data-provinceid="14">蚌埠市</a><a
+                                        href="javascipt:;" data-cityid="2704" data-provinceid="31">巴音郭楞州</a><a
+                                        href="javascipt:;" data-cityid="2298" data-provinceid="25">保山市</a><a
+                                        href="javascipt:;" data-cityid="589" data-provinceid="8">本溪市</a><a
+                                        href="javascipt:;" data-cityid="3706" data-provinceid="23">白沙县</a><a
+                                        href="javascipt:;" data-cityid="681" data-provinceid="9">白城市</a><a
+                                        href="javascipt:;" data-cityid="3709" data-provinceid="23">保亭县</a><a
+                                        href="javascipt:;" data-cityid="1746" data-provinceid="20">北海市</a><a
+                                        href="javascipt:;" data-cityid="664" data-provinceid="9">白山市</a><a
+                                        href="javascipt:;" data-cityid="199" data-provinceid="5">保定市</a><a
+                                        href="javascipt:;" data-cityid="1174" data-provinceid="14">亳州市</a><a
+                                        href="javascipt:;" data-cityid="805" data-provinceid="11">包头市</a><a
+                                        href="javascipt:;" data-cityid="2495" data-provinceid="28">白银市</a><a
+                                        href="javascipt:;" data-cityid="880" data-provinceid="11">巴彦淖尔市</a><a
+                                        href="javascipt:;" data-cityid="1806" data-provinceid="20">百色市</a><a
+                                        href="javascipt:;" data-cityid="2042" data-provinceid="22">巴中市</a><a
+                                        href="javascipt:;" data-cityid="2390" data-provinceid="27">宝鸡市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">C</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="48131"
+                                                        data-provinceid="4">重庆</a><a href="javascipt:;"
+                                                                                     data-cityid="2714"
+                                                                                     data-provinceid="31">昌吉州</a><a
+                                        href="javascipt:;" data-cityid="632" data-provinceid="8">朝阳市</a><a
+                                        href="javascipt:;" data-cityid="639" data-provinceid="9">长春市</a><a
+                                        href="javascipt:;" data-cityid="1544" data-provinceid="18">郴州市</a><a
+                                        href="javascipt:;" data-cityid="3705" data-provinceid="23">昌江县</a><a
+                                        href="javascipt:;" data-cityid="3702" data-provinceid="23">澄迈县</a><a
+                                        href="javascipt:;" data-cityid="3138" data-provinceid="26">昌都地区</a><a
+                                        href="javascipt:;" data-cityid="3168" data-provinceid="20">崇左市</a><a
+                                        href="javascipt:;" data-cityid="1159" data-provinceid="14">滁州市</a><a
+                                        href="javascipt:;" data-cityid="1705" data-provinceid="19">潮州市</a><a
+                                        href="javascipt:;" data-cityid="3074" data-provinceid="6">长治市</a><a
+                                        href="javascipt:;" data-cityid="239" data-provinceid="5">承德市</a><a
+                                        href="javascipt:;" data-cityid="1201" data-provinceid="14">池州市</a><a
+                                        href="javascipt:;" data-cityid="812" data-provinceid="11">赤峰市</a><a
+                                        href="javascipt:;" data-cityid="264" data-provinceid="5">沧州市</a><a
+                                        href="javascipt:;" data-cityid="1482" data-provinceid="18">长沙市</a><a
+                                        href="javascipt:;" data-cityid="2336" data-provinceid="25">楚雄州</a><a
+                                        href="javascipt:;" data-cityid="1530" data-provinceid="18">常德市</a><a
+                                        href="javascipt:;" data-cityid="978" data-provinceid="12">常州市</a><a
+                                        href="javascipt:;" data-cityid="1930" data-provinceid="22">成都市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">D</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="573" data-provinceid="8">大连市</a><a
+                                        href="javascipt:;" data-cityid="1655" data-provinceid="19">东莞市</a><a
+                                        href="javascipt:;" data-cityid="1025" data-provinceid="13">东营市</a><a
+                                        href="javascipt:;" data-cityid="1060" data-provinceid="13">德州市</a><a
+                                        href="javascipt:;" data-cityid="593" data-provinceid="8">丹东市</a><a
+                                        href="javascipt:;" data-cityid="3703" data-provinceid="23">定安县</a><a
+                                        href="javascipt:;" data-cityid="3173" data-provinceid="23">东方市</a><a
+                                        href="javascipt:;" data-cityid="742" data-provinceid="10">大庆市</a><a
+                                        href="javascipt:;" data-cityid="3080" data-provinceid="28">定西市</a><a
+                                        href="javascipt:;" data-cityid="309" data-provinceid="6">大同市</a><a
+                                        href="javascipt:;" data-cityid="4108" data-provinceid="25">迪庆州</a><a
+                                        href="javascipt:;" data-cityid="793" data-provinceid="10">大兴安岭地区</a><a
+                                        href="javascipt:;" data-cityid="3034" data-provinceid="23">儋州市</a><a
+                                        href="javascipt:;" data-cityid="2033" data-provinceid="22">达州市</a><a
+                                        href="javascipt:;" data-cityid="2347" data-provinceid="25">大理州</a><a
+                                        href="javascipt:;" data-cityid="2360" data-provinceid="25">德宏州</a><a
+                                        href="javascipt:;" data-cityid="1962" data-provinceid="22">德阳市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">E</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="870"
+                                                        data-provinceid="11">鄂尔多斯市</a><a href="javascipt:;"
+                                                                                         data-cityid="1475"
+                                                                                         data-provinceid="17">鄂州市</a><a
+                                        href="javascipt:;" data-cityid="1466" data-provinceid="17">恩施州</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">F</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="617" data-provinceid="8">阜新市</a><a
+                                        href="javascipt:;" data-cityid="584" data-provinceid="8">抚顺市</a><a
+                                        href="javascipt:;" data-cityid="1749" data-provinceid="20">防城港市</a><a
+                                        href="javascipt:;" data-cityid="1167" data-provinceid="14">阜阳市</a><a
+                                        href="javascipt:;" data-cityid="1666" data-provinceid="19">佛山市</a><a
+                                        href="javascipt:;" data-cityid="1885" data-provinceid="21">抚州市</a><a
+                                        href="javascipt:;" data-cityid="1303" data-provinceid="16">福州市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">G</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="1601"
+                                                        data-provinceid="19">广州市</a><a href="javascipt:;"
+                                                                                       data-cityid="2605"
+                                                                                       data-provinceid="29">果洛州</a><a
+                                        href="javascipt:;" data-cityid="2564" data-provinceid="28">甘南州</a><a
+                                        href="javascipt:;" data-cityid="2084" data-provinceid="22">甘孜州</a><a
+                                        href="javascipt:;" data-cityid="1757" data-provinceid="20">贵港市</a><a
+                                        href="javascipt:;" data-cityid="1726" data-provinceid="20">桂林市</a><a
+                                        href="javascipt:;" data-cityid="2644" data-provinceid="30">固原市</a><a
+                                        href="javascipt:;" data-cityid="2144" data-provinceid="24">贵阳市</a><a
+                                        href="javascipt:;" data-cityid="1911" data-provinceid="21">赣州市</a><a
+                                        href="javascipt:;" data-cityid="2016" data-provinceid="22">广安市</a><a
+                                        href="javascipt:;" data-cityid="1977" data-provinceid="22">广元市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">H</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="1643"
+                                                        data-provinceid="19">惠州市</a><a href="javascipt:;"
+                                                                                       data-cityid="1099"
+                                                                                       data-provinceid="13">菏泽市</a><a
+                                        href="javascipt:;" data-cityid="1116" data-provinceid="14">合肥市</a><a
+                                        href="javascipt:;" data-cityid="1124" data-provinceid="14">淮北市</a><a
+                                        href="javascipt:;" data-cityid="1121" data-provinceid="14">淮南市</a><a
+                                        href="javascipt:;" data-cityid="1151" data-provinceid="14">黄山市</a><a
+                                        href="javascipt:;" data-cityid="1627" data-provinceid="19">河源市</a><a
+                                        href="javascipt:;" data-cityid="1574" data-provinceid="18">怀化市</a><a
+                                        href="javascipt:;" data-cityid="604" data-provinceid="8">葫芦岛市</a><a
+                                        href="javascipt:;" data-cityid="2620" data-provinceid="29">海西州</a><a
+                                        href="javascipt:;" data-cityid="2597" data-provinceid="29">黄南州</a><a
+                                        href="javascipt:;" data-cityid="698" data-provinceid="10">哈尔滨市</a><a
+                                        href="javascipt:;" data-cityid="2592" data-provinceid="29">海北州</a><a
+                                        href="javascipt:;" data-cityid="148" data-provinceid="5">邯郸市</a><a
+                                        href="javascipt:;" data-cityid="2603" data-provinceid="29">海南州</a><a
+                                        href="javascipt:;" data-cityid="1250" data-provinceid="15">湖州市</a><a
+                                        href="javascipt:;" data-cityid="2585" data-provinceid="29">海东地区</a><a
+                                        href="javascipt:;" data-cityid="2662" data-provinceid="31">哈密地区</a><a
+                                        href="javascipt:;" data-cityid="2666" data-provinceid="31">和田地区</a><a
+                                        href="javascipt:;" data-cityid="2121" data-provinceid="23">海口市</a><a
+                                        href="javascipt:;" data-cityid="1213" data-provinceid="15">杭州市</a><a
+                                        href="javascipt:;" data-cityid="727" data-provinceid="10">鹤岗市</a><a
+                                        href="javascipt:;" data-cityid="275" data-provinceid="5">衡水市</a><a
+                                        href="javascipt:;" data-cityid="2442" data-provinceid="27">汉中市</a><a
+                                        href="javascipt:;" data-cityid="799" data-provinceid="11">呼和浩特市</a><a
+                                        href="javascipt:;" data-cityid="1387" data-provinceid="17">黄石市</a><a
+                                        href="javascipt:;" data-cityid="776" data-provinceid="10">黑河市</a><a
+                                        href="javascipt:;" data-cityid="848" data-provinceid="11">呼伦贝尔市</a><a
+                                        href="javascipt:;" data-cityid="1818" data-provinceid="20">河池市</a><a
+                                        href="javascipt:;" data-cityid="1792" data-provinceid="20">贺州市</a><a
+                                        href="javascipt:;" data-cityid="1501" data-provinceid="18">衡阳市</a><a
+                                        href="javascipt:;" data-cityid="2318" data-provinceid="25">红河州</a><a
+                                        href="javascipt:;" data-cityid="925" data-provinceid="12">淮安市</a><a
+                                        href="javascipt:;" data-cityid="454" data-provinceid="7">鹤壁市</a><a
+                                        href="javascipt:;" data-cityid="1441" data-provinceid="17">黄冈市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">J</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="1659"
+                                                        data-provinceid="19">江门市</a><a href="javascipt:;"
+                                                                                       data-cityid="2780"
+                                                                                       data-provinceid="7">济源市</a><a
+                                        href="javascipt:;" data-cityid="598" data-provinceid="8">锦州市</a><a
+                                        href="javascipt:;" data-cityid="1243" data-provinceid="15">嘉兴市</a><a
+                                        href="javascipt:;" data-cityid="1262" data-provinceid="15">金华市</a><a
+                                        href="javascipt:;" data-cityid="644" data-provinceid="9">吉林市</a><a
+                                        href="javascipt:;" data-cityid="737" data-provinceid="10">鸡西市</a><a
+                                        href="javascipt:;" data-cityid="1709" data-provinceid="19">揭阳市</a><a
+                                        href="javascipt:;" data-cityid="765" data-provinceid="10">佳木斯市</a><a
+                                        href="javascipt:;" data-cityid="1898" data-provinceid="21">吉安市</a><a
+                                        href="javascipt:;" data-cityid="2492" data-provinceid="28">金昌市</a><a
+                                        href="javascipt:;" data-cityid="2509" data-provinceid="28">嘉峪关市</a><a
+                                        href="javascipt:;" data-cityid="336" data-provinceid="6">晋中市</a><a
+                                        href="javascipt:;" data-cityid="1845" data-provinceid="21">九江市</a><a
+                                        href="javascipt:;" data-cityid="325" data-provinceid="6">晋城市</a><a
+                                        href="javascipt:;" data-cityid="1832" data-provinceid="21">景德镇市</a><a
+                                        href="javascipt:;" data-cityid="2556" data-provinceid="28">酒泉市</a><a
+                                        href="javascipt:;" data-cityid="1477" data-provinceid="17">荆门市</a><a
+                                        href="javascipt:;" data-cityid="446" data-provinceid="7">焦作市</a><a
+                                        href="javascipt:;" data-cityid="1000" data-provinceid="13">济南市</a><a
+                                        href="javascipt:;" data-cityid="1413" data-provinceid="17">荆州市</a><a
+                                        href="javascipt:;" data-cityid="2900" data-provinceid="13">济宁市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">K</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="2235"
+                                                        data-provinceid="25">昆明市</a><a href="javascipt:;"
+                                                                                       data-cityid="2699"
+                                                                                       data-provinceid="31">克孜勒苏柯尔克孜自治州</a><a
+                                        href="javascipt:;" data-cityid="2686" data-provinceid="31">喀什地区</a><a
+                                        href="javascipt:;" data-cityid="2654" data-provinceid="31">克拉玛依市</a><a
+                                        href="javascipt:;" data-cityid="420" data-provinceid="7">开封市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">L</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="621" data-provinceid="8">辽阳市</a><a
+                                        href="javascipt:;" data-cityid="1586" data-provinceid="18">娄底市</a><a
+                                        href="javascipt:;" data-cityid="1058" data-provinceid="13">莱芜市</a><a
+                                        href="javascipt:;" data-cityid="2291" data-provinceid="25">临沧市</a><a
+                                        href="javascipt:;" data-cityid="1081" data-provinceid="13">聊城市</a><a
+                                        href="javascipt:;" data-cityid="1072" data-provinceid="13">临沂市</a><a
+                                        href="javascipt:;" data-cityid="3710" data-provinceid="23">乐东县</a><a
+                                        href="javascipt:;" data-cityid="3708" data-provinceid="23">陵水县</a><a
+                                        href="javascipt:;" data-cityid="3701" data-provinceid="23">临高县</a><a
+                                        href="javascipt:;" data-cityid="2103" data-provinceid="22">凉山州</a><a
+                                        href="javascipt:;" data-cityid="2573" data-provinceid="28">临夏州</a><a
+                                        href="javascipt:;" data-cityid="1720" data-provinceid="20">柳州市</a><a
+                                        href="javascipt:;" data-cityid="2150" data-provinceid="24">六盘水市</a><a
+                                        href="javascipt:;" data-cityid="1206" data-provinceid="14">六安市</a><a
+                                        href="javascipt:;" data-cityid="274" data-provinceid="5">廊坊市</a><a
+                                        href="javascipt:;" data-cityid="1362" data-provinceid="16">龙岩市</a><a
+                                        href="javascipt:;" data-cityid="2992" data-provinceid="9">辽源市</a><a
+                                        href="javascipt:;" data-cityid="2951" data-provinceid="26">拉萨市</a><a
+                                        href="javascipt:;" data-cityid="2487" data-provinceid="28">兰州市</a><a
+                                        href="javascipt:;" data-cityid="3044" data-provinceid="20">来宾市</a><a
+                                        href="javascipt:;" data-cityid="1280" data-provinceid="15">丽水市</a><a
+                                        href="javascipt:;" data-cityid="3971" data-provinceid="26">林芝地区</a><a
+                                        href="javascipt:;" data-cityid="368" data-provinceid="6">吕梁市</a><a
+                                        href="javascipt:;" data-cityid="2534" data-provinceid="28">陇南市</a><a
+                                        href="javascipt:;" data-cityid="379" data-provinceid="6">临汾市</a><a
+                                        href="javascipt:;" data-cityid="2304" data-provinceid="25">丽江市</a><a
+                                        href="javascipt:;" data-cityid="919" data-provinceid="12">连云港市</a><a
+                                        href="javascipt:;" data-cityid="427" data-provinceid="7">洛阳市</a><a
+                                        href="javascipt:;" data-cityid="1993" data-provinceid="22">乐山市</a><a
+                                        href="javascipt:;" data-cityid="1954" data-provinceid="22">泸州市</a><a
+                                        href="javascipt:;" data-cityid="489" data-provinceid="7">漯河市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">M</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="1634"
+                                                        data-provinceid="19">梅州市</a><a href="javascipt:;"
+                                                                                       data-cityid="1137"
+                                                                                       data-provinceid="14">马鞍山市</a><a
+                                        href="javascipt:;" data-cityid="2058" data-provinceid="22">眉山市</a><a
+                                        href="javascipt:;" data-cityid="757" data-provinceid="10">牡丹江市</a><a
+                                        href="javascipt:;" data-cityid="1684" data-provinceid="19">茂名市</a><a
+                                        href="javascipt:;" data-cityid="1960" data-provinceid="22">绵阳市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">N</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="1158"
+                                                        data-provinceid="15">宁波市</a><a href="javascipt:;"
+                                                                                       data-cityid="1715"
+                                                                                       data-provinceid="20">南宁市</a><a
+                                        href="javascipt:;" data-cityid="3107" data-provinceid="26">那曲地区</a><a
+                                        href="javascipt:;" data-cityid="1370" data-provinceid="16">宁德市</a><a
+                                        href="javascipt:;" data-cityid="1352" data-provinceid="16">南平市</a><a
+                                        href="javascipt:;" data-cityid="1827" data-provinceid="21">南昌市</a><a
+                                        href="javascipt:;" data-cityid="2022" data-provinceid="22">南充市</a><a
+                                        href="javascipt:;" data-cityid="904" data-provinceid="12">南京市</a><a
+                                        href="javascipt:;" data-cityid="1988" data-provinceid="22">内江市</a><a
+                                        href="javascipt:;" data-cityid="2366" data-provinceid="25">怒江州</a><a
+                                        href="javascipt:;" data-cityid="502" data-provinceid="7">南阳市</a><a
+                                        href="javascipt:;" data-cityid="965" data-provinceid="12">南通市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">P</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="613" data-provinceid="8">盘锦市</a><a
+                                        href="javascipt:;" data-cityid="2281" data-provinceid="25">普洱市</a><a
+                                        href="javascipt:;" data-cityid="1836" data-provinceid="21">萍乡市</a><a
+                                        href="javascipt:;" data-cityid="2518" data-provinceid="28">平凉市</a><a
+                                        href="javascipt:;" data-cityid="1329" data-provinceid="16">莆田市</a><a
+                                        href="javascipt:;" data-cityid="438" data-provinceid="7">平顶山市</a><a
+                                        href="javascipt:;" data-cityid="475" data-provinceid="7">濮阳市</a><a
+                                        href="javascipt:;" data-cityid="1950" data-provinceid="22">攀枝花市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">Q</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="2205"
+                                                        data-provinceid="24">黔东南州</a><a href="javascipt:;"
+                                                                                        data-cityid="2196"
+                                                                                        data-provinceid="24">黔西南州</a><a
+                                        href="javascipt:;" data-cityid="2222" data-provinceid="24">黔南州</a><a
+                                        href="javascipt:;" data-cityid="2247" data-provinceid="25">曲靖市</a><a
+                                        href="javascipt:;" data-cityid="3707" data-provinceid="23">琼中县</a><a
+                                        href="javascipt:;" data-cityid="1753" data-provinceid="20">钦州市</a><a
+                                        href="javascipt:;" data-cityid="1273" data-provinceid="15">衢州市</a><a
+                                        href="javascipt:;" data-cityid="1704" data-provinceid="19">清远市</a><a
+                                        href="javascipt:;" data-cityid="712" data-provinceid="10">齐齐哈尔市</a><a
+                                        href="javascipt:;" data-cityid="3115" data-provinceid="23">琼海市</a><a
+                                        href="javascipt:;" data-cityid="248" data-provinceid="5">秦皇岛市</a><a
+                                        href="javascipt:;" data-cityid="773" data-provinceid="10">七台河市</a><a
+                                        href="javascipt:;" data-cityid="2525" data-provinceid="28">庆阳市</a><a
+                                        href="javascipt:;" data-cityid="1332" data-provinceid="16">泉州市</a><a
+                                        href="javascipt:;" data-cityid="2922" data-provinceid="17">潜江市</a><a
+                                        href="javascipt:;" data-cityid="1007" data-provinceid="13">青岛市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">R</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="1108"
+                                                        data-provinceid="13">日照市</a><a href="javascipt:;"
+                                                                                       data-cityid="3144"
+                                                                                       data-provinceid="26">日喀则地区</a>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">S</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="2817" data-provinceid="2">上海</a><a
+                                        href="javascipt:;" data-cityid="560" data-provinceid="8">沈阳市</a><a
+                                        href="javascipt:;" data-cityid="1650" data-provinceid="19">汕尾市</a><a
+                                        href="javascipt:;" data-cityid="517" data-provinceid="7">商丘市</a><a
+                                        href="javascipt:;" data-cityid="1611" data-provinceid="19">汕头市</a><a
+                                        href="javascipt:;" data-cityid="1607" data-provinceid="19">深圳市</a><a
+                                        href="javascipt:;" data-cityid="1617" data-provinceid="19">韶关市</a><a
+                                        href="javascipt:;" data-cityid="3711" data-provinceid="23">三沙市</a><a
+                                        href="javascipt:;" data-cityid="142" data-provinceid="5">石家庄市</a><a
+                                        href="javascipt:;" data-cityid="674" data-provinceid="9">松原市</a><a
+                                        href="javascipt:;" data-cityid="3154" data-provinceid="17">神农架林区</a><a
+                                        href="javascipt:;" data-cityid="3690" data-provinceid="23">三亚市</a><a
+                                        href="javascipt:;" data-cityid="1255" data-provinceid="15">绍兴市</a><a
+                                        href="javascipt:;" data-cityid="651" data-provinceid="9">四平市</a><a
+                                        href="javascipt:;" data-cityid="2656" data-provinceid="31">石河子市</a><a
+                                        href="javascipt:;" data-cityid="1180" data-provinceid="14">宿州市</a><a
+                                        href="javascipt:;" data-cityid="3129" data-provinceid="26">山南地区</a><a
+                                        href="javascipt:;" data-cityid="731" data-provinceid="10">双鸭山市</a><a
+                                        href="javascipt:;" data-cityid="2632" data-provinceid="30">石嘴山市</a><a
+                                        href="javascipt:;" data-cityid="1405" data-provinceid="17">十堰市</a><a
+                                        href="javascipt:;" data-cityid="2468" data-provinceid="27">商洛市</a><a
+                                        href="javascipt:;" data-cityid="782" data-provinceid="10">绥化市</a><a
+                                        href="javascipt:;" data-cityid="1861" data-provinceid="21">上饶市</a><a
+                                        href="javascipt:;" data-cityid="330" data-provinceid="6">朔州市</a><a
+                                        href="javascipt:;" data-cityid="1315" data-provinceid="16">厦门市</a><a
+                                        href="javascipt:;" data-cityid="1317" data-provinceid="16">三明市</a><a
+                                        href="javascipt:;" data-cityid="1479" data-provinceid="17">随州市</a><a
+                                        href="javascipt:;" data-cityid="933" data-provinceid="12">宿迁市</a><a
+                                        href="javascipt:;" data-cityid="1511" data-provinceid="18">邵阳市</a><a
+                                        href="javascipt:;" data-cityid="1983" data-provinceid="22">遂宁市</a><a
+                                        href="javascipt:;" data-cityid="988" data-provinceid="12">苏州市</a><a
+                                        href="javascipt:;" data-cityid="495" data-provinceid="7">三门峡市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">T</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="51035"
+                                                        data-provinceid="3">天津</a><a href="javascipt:;"
+                                                                                     data-cityid="2736"
+                                                                                     data-provinceid="31">塔城地区</a><a
+                                        href="javascipt:;" data-cityid="1112" data-provinceid="13">泰安市</a><a
+                                        href="javascipt:;" data-cityid="1114" data-provinceid="14">铜陵市</a><a
+                                        href="javascipt:;" data-cityid="3704" data-provinceid="23">屯昌县</a><a
+                                        href="javascipt:;" data-cityid="657" data-provinceid="9">通化市</a><a
+                                        href="javascipt:;" data-cityid="2658" data-provinceid="31">吐鲁番地区</a><a
+                                        href="javascipt:;" data-cityid="2169" data-provinceid="24">铜仁市</a><a
+                                        href="javascipt:;" data-cityid="2980" data-provinceid="17">天门市</a><a
+                                        href="javascipt:;" data-cityid="258" data-provinceid="5">唐山市</a><a
+                                        href="javascipt:;" data-cityid="303" data-provinceid="6">太原市</a><a
+                                        href="javascipt:;" data-cityid="2501" data-provinceid="28">天水市</a><a
+                                        href="javascipt:;" data-cityid="1290" data-provinceid="15">台州市</a><a
+                                        href="javascipt:;" data-cityid="6858" data-provinceid="8">铁岭市</a><a
+                                        href="javascipt:;" data-cityid="959" data-provinceid="12">泰州市</a><a
+                                        href="javascipt:;" data-cityid="902" data-provinceid="11">通辽市</a><a
+                                        href="javascipt:;" data-cityid="15946" data-provinceid="31">图木舒克市</a><a
+                                        href="javascipt:;" data-cityid="2386" data-provinceid="27">铜川市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">W</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="1127"
+                                                        data-provinceid="14">芜湖市</a><a href="javascipt:;"
+                                                                                       data-cityid="1032"
+                                                                                       data-provinceid="13">潍坊市</a><a
+                                        href="javascipt:;" data-cityid="1053" data-provinceid="13">威海市</a><a
+                                        href="javascipt:;" data-cityid="3699" data-provinceid="23">五指山市</a><a
+                                        href="javascipt:;" data-cityid="3698" data-provinceid="23">文昌市</a><a
+                                        href="javascipt:;" data-cityid="1233" data-provinceid="15">温州市</a><a
+                                        href="javascipt:;" data-cityid="3137" data-provinceid="23">万宁市</a><a
+                                        href="javascipt:;" data-cityid="1740" data-provinceid="20">梧州市</a><a
+                                        href="javascipt:;" data-cityid="2652" data-provinceid="31">乌鲁木齐市</a><a
+                                        href="javascipt:;" data-cityid="2637" data-provinceid="30">吴忠市</a><a
+                                        href="javascipt:;" data-cityid="823" data-provinceid="11">乌兰察布市</a><a
+                                        href="javascipt:;" data-cityid="810" data-provinceid="11">乌海市</a><a
+                                        href="javascipt:;" data-cityid="4110" data-provinceid="31">五家渠市</a><a
+                                        href="javascipt:;" data-cityid="1381" data-provinceid="17">武汉市</a><a
+                                        href="javascipt:;" data-cityid="2544" data-provinceid="28">武威市</a><a
+                                        href="javascipt:;" data-cityid="2309" data-provinceid="25">文山州</a><a
+                                        href="javascipt:;" data-cityid="984" data-provinceid="12">无锡市</a><a
+                                        href="javascipt:;" data-cityid="2416" data-provinceid="27">渭南市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">X</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="549" data-provinceid="7">信阳市</a><a
+                                        href="javascipt:;" data-cityid="1592" data-provinceid="18">湘西州</a><a
+                                        href="javascipt:;" data-cityid="2580" data-provinceid="29">西宁市</a><a
+                                        href="javascipt:;" data-cityid="164" data-provinceid="5">邢台市</a><a
+                                        href="javascipt:;" data-cityid="2983" data-provinceid="17">仙桃市</a><a
+                                        href="javascipt:;" data-cityid="1396" data-provinceid="17">襄阳市</a><a
+                                        href="javascipt:;" data-cityid="2971" data-provinceid="14">宣城市</a><a
+                                        href="javascipt:;" data-cityid="350" data-provinceid="6">忻州市</a><a
+                                        href="javascipt:;" data-cityid="895" data-provinceid="11">兴安盟</a><a
+                                        href="javascipt:;" data-cityid="1842" data-provinceid="21">新余市</a><a
+                                        href="javascipt:;" data-cityid="835" data-provinceid="11">锡林郭勒盟</a><a
+                                        href="javascipt:;" data-cityid="1495" data-provinceid="18">湘潭市</a><a
+                                        href="javascipt:;" data-cityid="2332" data-provinceid="25">西双版纳州</a><a
+                                        href="javascipt:;" data-cityid="911" data-provinceid="12">徐州市</a><a
+                                        href="javascipt:;" data-cityid="1432" data-provinceid="17">孝感市</a><a
+                                        href="javascipt:;" data-cityid="2376" data-provinceid="27">西安市</a><a
+                                        href="javascipt:;" data-cityid="458" data-provinceid="7">新乡市</a><a
+                                        href="javascipt:;" data-cityid="1458" data-provinceid="17">咸宁市</a><a
+                                        href="javascipt:;" data-cityid="2402" data-provinceid="27">咸阳市</a><a
+                                        href="javascipt:;" data-cityid="482" data-provinceid="7">许昌市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">Y</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="2727"
+                                                        data-provinceid="31">伊犁州</a><a href="javascipt:;"
+                                                                                       data-cityid="609"
+                                                                                       data-provinceid="8">营口市</a><a
+                                        href="javascipt:;" data-cityid="2258" data-provinceid="25">玉溪市</a><a
+                                        href="javascipt:;" data-cityid="1042" data-provinceid="13">烟台市</a><a
+                                        href="javascipt:;" data-cityid="1560" data-provinceid="18">永州市</a><a
+                                        href="javascipt:;" data-cityid="1555" data-provinceid="18">益阳市</a><a
+                                        href="javascipt:;" data-cityid="687" data-provinceid="9">延边州</a><a
+                                        href="javascipt:;" data-cityid="1761" data-provinceid="20">玉林市</a><a
+                                        href="javascipt:;" data-cityid="2612" data-provinceid="29">玉树州</a><a
+                                        href="javascipt:;" data-cityid="1698" data-provinceid="19">云浮市</a><a
+                                        href="javascipt:;" data-cityid="753" data-provinceid="10">伊春市</a><a
+                                        href="javascipt:;" data-cityid="1672" data-provinceid="19">阳江市</a><a
+                                        href="javascipt:;" data-cityid="2628" data-provinceid="30">银川市</a><a
+                                        href="javascipt:;" data-cityid="2454" data-provinceid="27">榆林市</a><a
+                                        href="javascipt:;" data-cityid="1874" data-provinceid="21">宜春市</a><a
+                                        href="javascipt:;" data-cityid="318" data-provinceid="6">阳泉市</a><a
+                                        href="javascipt:;" data-cityid="1857" data-provinceid="21">鹰潭市</a><a
+                                        href="javascipt:;" data-cityid="951" data-provinceid="12">扬州市</a><a
+                                        href="javascipt:;" data-cityid="2047" data-provinceid="22">雅安市</a><a
+                                        href="javascipt:;" data-cityid="398" data-provinceid="6">运城市</a><a
+                                        href="javascipt:;" data-cityid="939" data-provinceid="12">盐城市</a><a
+                                        href="javascipt:;" data-cityid="1522" data-provinceid="18">岳阳市</a><a
+                                        href="javascipt:;" data-cityid="2005" data-provinceid="22">宜宾市</a><a
+                                        href="javascipt:;" data-cityid="1421" data-provinceid="17">宜昌市</a><a
+                                        href="javascipt:;" data-cityid="2428" data-provinceid="27">延安市</a></div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="hd_city_innitial_tit">Z</div>
+                                <div class="hd_city"><a href="javascipt:;" data-cityid="1657"
+                                                        data-provinceid="19">中山市</a><a href="javascipt:;"
+                                                                                       data-cityid="1609"
+                                                                                       data-provinceid="19">珠海市</a><a
+                                        href="javascipt:;" data-cityid="527" data-provinceid="7">周口市</a><a
+                                        href="javascipt:;" data-cityid="538" data-provinceid="7">驻马店市</a><a
+                                        href="javascipt:;" data-cityid="2270" data-provinceid="25">昭通市</a><a
+                                        href="javascipt:;" data-cityid="1540" data-provinceid="18">张家界市</a><a
+                                        href="javascipt:;" data-cityid="2065" data-provinceid="22">资阳市</a><a
+                                        href="javascipt:;" data-cityid="1677" data-provinceid="19">湛江市</a><a
+                                        href="javascipt:;" data-cityid="224" data-provinceid="5">张家口市</a><a
+                                        href="javascipt:;" data-cityid="2155" data-provinceid="24">遵义市</a><a
+                                        href="javascipt:;" data-cityid="1690" data-provinceid="19">肇庆市</a><a
+                                        href="javascipt:;" data-cityid="1298" data-provinceid="15">舟山市</a><a
+                                        href="javascipt:;" data-cityid="3071" data-provinceid="30">中卫市</a><a
+                                        href="javascipt:;" data-cityid="1341" data-provinceid="16">漳州市</a><a
+                                        href="javascipt:;" data-cityid="2549" data-provinceid="28">张掖市</a><a
+                                        href="javascipt:;" data-cityid="1488" data-provinceid="18">株洲市</a><a
+                                        href="javascipt:;" data-cityid="412" data-provinceid="7">郑州市</a><a
+                                        href="javascipt:;" data-cityid="1016" data-provinceid="13">淄博市</a><a
+                                        href="javascipt:;" data-cityid="1022" data-provinceid="13">枣庄市</a><a
+                                        href="javascipt:;" data-cityid="1946" data-provinceid="22">自贡市</a><a
+                                        href="javascipt:;" data-cityid="972" data-provinceid="12">镇江市</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hd_topbar_right">
+                <ul>
+                    <li id="global_unlogin">
+                        <div class="hd_unlogin">
+                            <span class="hd_hi">Hi,请</span>
+                            <a href="http://tpl.aillen.top" class="hd_login_link"
+                               clstag="pageclick|keycount|global_201709226|2">登录&nbsp;</a>
+                            <a href="http://tpl.aillen.top" class="hd_regist_link"
+                               clstag="pageclick|keycount|global_201709226|3">&nbsp;注册</a>
+                        </div>
+                    </li>
+                    <li id="global_login" class="hd_has_child" style="display:none" data-type="2017"
+                        clstag="pageclick|keycount|global_201709226|4">
+                        <div class="hd_login">
+                            <span class="hd_hi">Hi,</span>
+                            <a href="http://home.yhd.com/myyhdindex/index.do" target="_blank" class="hd_login_name">__nickName__</a>
+                            <a href="http://vip.yhd.com/" target="_blank" class="hd_vip hd_vip__gradeStyle__">__gradeDesc__</a>
+                            <i class="hd_iconfont"></i>
+                        </div>
+                        <div class="hd_user_privilege">
+                            <a href="javascript:;" class="hd_login_out">退出</a>
+                            <div class="clearfix">
+                            </div>
+                            <div class="hd_privilege_tit"><span>我可尊享<em>5</em>项特权</span></div>
+                            <div class="hd_privilege_wrap hd_privilege_slide">
+                                <a href="javascript:;" class="prev_btn hd_iconfont"></a>
+                                <div class="hd_privilege clearfix">
+                                    <div class="hd_privilege_list" style="left: -60px; margin-left: 0px;">
+                                    </div>
+                                </div>
+                                <a href="javascript:;" class="next_btn hd_iconfont"></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li clstag="pageclick|keycount|global_201709226|5">
+                        <div class="hd_menu hd_notice" id="hdUserMsg" style="display: none" data-cfg="1">
+                            <a href="http://tpl.aillen.top" rel="nofollow" target="_blank">我的消息&nbsp;(<em
+                                    class="hd_has_num">0</em>)</a>
+                        </div>
+                    </li>
+                    <li clstag="pageclick|keycount|global_201709226|6">
+                        <div class="hd_menu">
+                            <a href="http:http://tpl.aillen.top" target="_blank" rel="nofollow"><i
+                                    class="hd_iconfont"></i>我的订单</a>
+                        </div>
+                    </li>
+                    <li class="hd_has_child" clstag="pageclick|keycount|global_201709226|7">
+                        <div class="hd_menu">
+                            <a href="http://cms.yhd.com/cms/view.do?topicId=43" target="_blank">客户服务</a>
+                            <i class="hd_iconfont"></i>
+                        </div>
+                        <div class="hd_menu_list">
+                            <a href="http://home.yhd.com/order/toOrderList.do" target="_blank" title="包裹跟踪">包裹跟踪</a>
+                            <a href="http://rma.yhd.com/return/returnApplyList.do" target="_blank"
+                               title="在线退换货">在线退换货</a>
+                        </div>
+                    </li>
+                    <li class="hd_has_child">
+                        <div class="hd_title">
+                            <a href="javascript:;"><i class="iconfont180315"></i>APP下载</a>
+                        </div>
+                        <div class="hd_qrcode_bg">
+                            <div class="triangle"></div>
+                            <p>扫描二维码</p>
+                            <p>下载1号店APP</p>
+                            <a href="http://tpl.aillen.top" target="_blank">
+                                <img src="/static/index/content_files/qryhd.png">
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- top_main base -->
+    <div class="wrap hd_header hd_cm_global">
+        <div class="clearfix">
+            <div class="hd_logo_area" clstag="pageclick|keycount|2017091213|22">
+                <a href="http://tpl.aillen." class="hd_logo"><img
+                        src="/static/index/content_files/ChEi2lj4TqGAOjXwAAAbSq83IXA88700.png" alt="基础头部logo"></a>
+            </div>
+            <div class="hd_header_right">
+                <div class="clearfix">
+                    <div class="hd_head_search">
+                        <div class="hd_search_form" id="hdSearchForm">
+                            <div class="hd_fixed_wrap">
+                                <a href="http://tpl.aillen.top" class="hd_fixed_logo"><img
+                                        src="/static/index/content_files/ChEi11jziUSAOkn4AABJ2dwtrSw01400.jpg" alt=""
+                                        height="70" width="205"></a>
+                                <div class="hd_search_wrap clearfix">
+                                    <label for="keyword" style="display:none;">笔记本5折抢 家电最高减千元</label>
+                                    <input class="hd_search_ipt" name="keyword" id="keyword"
+                                           placeholder="笔记本5折抢 家电最高减千元" original="笔记本5折抢 家电最高减千元"
+                                           url="https://sale.yhd.com/act/ZShymgxETvNrKFX.html" style="color:#333333;"
+                                           maxlength="100" autocomplete="off" x-webkit-speech=""
+                                           onwebkitspeechchange="emptySearchBar();" x-webkit-grammar="builtin:translate"
+                                           type="text">
+                                    <button type="button" class="hd_search_btn" onclick="javascript:searchMeForClick();"
+                                            clstag="pageclick|keycount|global_201709226|8"><i class="hd_iconfont"></i>
+                                    </button>
+                                </div>
+                                <!--搜索提示 begin-->
+                                <div id="searchSuggest" class="hd_search_tips_result" style="display:none"
+                                     onmouseover="$('#searchSuggest').show()"
+                                     clstag="pageclick|keycount|global_201709226|9"></div>
+                                <!--搜索提示 end-->
+                            </div>
+                        </div>
+                        <p id="hotKeywordsShow" class="hd_hot_search" clstag="pageclick|keycount|201708178|2"><a
+                                title="栗子" target="_blank"
+                                href="http://search.yhd.com/c0-0/k%25E6%25A0%2597%25E5%25AD%2590/">栗子</a> <a title="虾米干"
+                                                                                                             target="_blank"
+                                                                                                             href="http://search.yhd.com/c0-0/k%25E8%2599%25BE%25E7%25B1%25B3%25E5%25B9%25B2/">虾米干</a>
+                            <a title="竹荪" target="_blank"
+                               href="http://search.yhd.com/c0-0/k%25E7%25AB%25B9%25E8%258D%25AA/">竹荪</a> <a title="鱼仔"
+                                                                                                            target="_blank"
+                                                                                                            href="http://search.yhd.com/c0-0/k%25E9%25B1%25BC%25E4%25BB%2594/">鱼仔</a>
+                            <a title="鱼籽" target="_blank"
+                               href="http://search.yhd.com/c0-0/k%25E9%25B1%25BC%25E7%25B1%25BD/">鱼籽</a> <a title="蒸馍锅"
+                                                                                                            target="_blank"
+                                                                                                            href="http://search.yhd.com/c0-0/k%25E8%2592%25B8%25E9%25A6%258D%25E9%2594%2585/">蒸馍锅</a>
+                            <a title="羊奶" target="_blank"
+                               href="http://search.yhd.com/c0-0/k%25E7%25BE%258A%25E5%25A5%25B6/">羊奶</a> <a title="五常米"
+                                                                                                            target="_blank"
+                                                                                                            href="http://search.yhd.com/c0-0/k%25E4%25BA%2594%25E5%25B8%25B8%25E7%25B1%25B3/">五常米</a>
+                            <a title="平角裤" target="_blank"
+                               href="http://search.yhd.com/c0-0/k%25E5%25B9%25B3%25E8%25A7%2592%25E8%25A3%25A4/">平角裤</a>
+                            <a title="猴菇" target="_blank"
+                               href="http://search.yhd.com/c0-0/k%25E7%258C%25B4%25E8%258F%2587/">猴菇</a></p>
+                        <!--搜索推荐-->
+                    </div>
+                    <div class="hd_mini_cart" id="miniCart" data-version="1" clstag="pageclick|keycount|2017091213|19">
+                        <u class="hd_c_num none" id="in_cart_num" style="display: inline;">3</u>
+                        <a class="hd_prism_cart" href="http://cart.yhd.com/cart/cart.do" data-ref="YHD_TOP_MINICART">
+                            <em class="hd_iconfont"></em>
+                            <span>购物车</span>
+                        </a>
+                        <div class="hd_cart_show none" id="showMiniCartDetail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top_nav base -->
+    <div class="hd_cm_wrap">
+        <div class="wrap">
+            <div class="hd_cm_nav clearfix" id="headerNav">
+                <div class="hd_cm_allsort_wrap" id="allSortbox">
+                    <a href="javascript:;" class="hd_cm_tit">所有商品分类<em class="hd_iconfont"></em></a>
+                    <div class="mod_hd_allsort">
+                    </div>
+                </div>
+                <div class="hd_cm_nav_wrap">
+                    <ul class="clearfix" id="global_menu">
+                        <li>
+                            <a href="http://qianggou.yhd.com/" title="1号抢购" target="_blank">1号抢购</a>
+                        </li>
+                        <li>
+                            <a href="http://t.yhd.com/" title="1号团" target="_blank">1号团</a>
+                        </li>
+                        <li>
+                            <a href="http://coupon.yhd.com/couponCenter/home" title="领券中心" target="_blank">领券中心</a>
+                        </li>
+                        <li>
+                            <a href="http://sale.yhd.com/act/7nI2YQBtC4Xs.html" title="捡便宜" target="_blank">捡便宜</a>
+                        </li>
+                        <li>
+                            <a href="http://channel.yhd.com/import.html" title="全球进口" target="_blank">全球进口</a>
+                        </li>
+                        <li>
+                            <a href="https://sale.yhd.com/act/kLpM7UEzshTZmv.html" title="1号生鲜" target="_blank">1号生鲜</a>
+                        </li>
+                        <li>
+                            <a href="https://sale.yhd.com/act/uf0DFM6Iahpn.html" title="美妆馆" target="_blank">美妆馆</a>
+                        </li>
+                        <li>
+                            <a href="https://sale.yhd.com/act/LPHwt8z1A5x.html" title="家居馆" target="_blank">家居馆</a>
+                        </li>
+                        <li>
+                            <a href="https://sale.yhd.com/act/PnGHmKZ4u16pab.html" title="电器城" target="_blank">电器城</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--content start-->
+
+<div class="detail_wrap">
+    <!--面包屑-->
+    <div class="mod_detail_crumb clearfix" >
+        <div class="crumb clearfix" style="height:61px;">
+            <a clstag="pageclick|keycount|product_201709214|1" target="_blank"
+               href="http://search.yhd.com/c1320-0-0"><em>食品饮料</em><i class="iconDetail"></i></a>
+            <a clstag="pageclick|keycount|product_201709214|2" target="_blank"
+               href="http://search.yhd.com/c5019-0-0"><em>进口食品</em><i class="iconDetail"></i></a>
+            <a clstag="pageclick|keycount|product_201709214|3" target="_blank"
+               href="http://search.yhd.com/c12215-0-0"><em>牛奶</em><i class="iconDetail"></i></a>
+            <a clstag="pageclick|keycount|product_201709214|4" target="_blank"
+               href="http://search.yhd.com/search.do?req.requestType=10&amp;source=sx&amp;req.category=12215&amp;req.keyword=%E8%8D%B7%E5%85%B0%E4%B9%B3%E7%89%9B&amp;req.brands=8181"><em>荷兰乳牛</em><i
+                    class="iconDetail"></i></a>
+            <span>
+<em title="荷兰乳牛全脂牛奶">荷兰乳牛全脂牛奶</em>
+</span>
+        </div>
+    </div>
+    <!--第一屏-->
+    <div class="fm_detail_one clearfix">
+        <!--左侧主图区域-->
+        <div class="l">
+            <div class="mod_detail_preview clearfix" id="jsModDetailPreview">
+                <!--左侧主图区域-->
+                <!-- 大图 start -->
+
+                <div class="proImg_border">
+
+                    <div class="proImg">
+                        <input autocomplete="off" id="sub115115PicURL"
+                               value="//img13.360buyimg.com/n1/s115x115_jfs/t14830/241/2193737314/313663/12d0ae0f/5a72d5b1Na0080b75.jpg"
+                               type="hidden">
+                        <input autocomplete="off" id="sub120120PicURL"
+                               value="//img13.360buyimg.com/n1/s120x120_jfs/t14830/241/2193737314/313663/12d0ae0f/5a72d5b1Na0080b75.jpg"
+                               type="hidden">
+                        <?php $pics = explode('|',$field['pics']);?>
+                        {foreach $pics as $v}
+                        <img id="J_prodImg"
+                             original_src="{$v}"
+                             src="{$v}" height="360"
+                             width="360">
+                        {/foreach}
+                        <div class="zoomCursor" style="left: 180px; top: 29px; display: none;"></div>
+                        <div class="mask"></div>
+                        <!-- 视频播放 -->
+                        <div id="video-box" style="">
+                            <div class="j-video" id="v-video">
+                                <div id="J-v-player">
+                                    <video id="video-player_html5_api" poster="//misc.360buyimg.com/lib/img/e/blank.gif"
+                                           class="vjs-tech" preload="auto" src="/static/index/content_files/v.mp4">
+                                        <source src="" type="video/m3u8">
+                                        <p class="vjs-no-js"> 您的浏览器不支持 HTML 5 Video 标签，请升级浏览器。</p>
+                                    </video>
+                                </div>
+                                <button class="vjs-big-play-button" type="button"></button>
+                                <div class="v-close-btn"></div>
+                                <div class="video-controls-container">
+                                    <div class="video-progress-line">
+                                        <div class="video-buffered-percent" style="width: 0px;"></div>
+                                        <div class="video-progress-percent">
+                                            <span class="video-progress-time"></span>
+                                        </div>
+                                        <div class="video-point-line">
+                                            <span class="video-point-time"></span>
+                                        </div>
+                                    </div>
+                                    <div class="video-controls-buttons clearfix">
+                                        <div class="fl video-switch video-hover-shadow" id="video-switch"></div>
+                                        <div class="fl video-time-duration">
+                                            <span id="video-currentTime">0:00</span>
+                                            <span>/</span>
+                                            <span id="video-duration">0:25</span>
+                                        </div>
+                                        <div class="fl video-voice-container">
+                                            <div class="fl video-voice-large video-hover-shadow" id="video-voice"></div>
+                                            <div class="fl video-voice-max">
+                                                <div class="video-voice-back">
+                                                    <div class="video-voice-progress"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="video-allscreen video-hover-shadow" id="video-fullScreen"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-show-btn" style="display: block;"></div>
+                        </div>
+                        <!-- 视频结束 --> <!-- 视频结束 -->
+                    </div>
+                </div>
+                <!-- 大图 end -->
+                <!-- middle img list start -->
+                <div class="proCrumb clearfix" id="jsproCrumb" clstag="pageclick|keycount|product_201709214|5">
+                    <a href="javascript:void(0);" class="cBtn prev iconDetail" title="上一个" style="display: none;"></a>
+                    <div class="hideBox">
+                        <div class="mBox clearfix">
+                            {foreach $pics as $v}
+                            <b class="cur"><img class="detail_main_pic_class"
+                                                original_src="jfs/t14830/241/2193737314/313663/12d0ae0f/5a72d5b1Na0080b75.jpg"
+                                                alt="{$v}"
+                                                src="{$v}" height="50"
+                                                width="50"></b>
+                            <b><img class="detail_main_pic_class"
+                                    original_src="{$v}"
+                                    alt="{$v}"
+                                    src="{$v}" height="50" width="50"></b>
+                            <b><img class="detail_main_pic_class"
+                                    original_src="{$v}"
+                                    alt="{$v}"
+                                    src="{$v}" height="50" width="50"></b>
+                            <b><img class="detail_main_pic_class"
+                                    original_src="{$v}"
+                                    alt="{$v}"
+                                    src="{$v}" height="50" width="50"></b>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0);" class="cBtn next iconDetail" title="下一个" style="display: none;"></a>
+                </div>
+                <div class="J_zoom" id="J_zoom" style="display: none;"><img id="sub600600PicURL"
+                                                                            original_src="{$v}"
+                                                                            alt=""
+                                                                            src="{$v}"
+                                                                            style="left: -50px; top: -20.7143px;"
+                  height="600" width="600"></div>
+
+                {/foreach}
+                <!-- middle img list end -->
+            </div>
+            <!-- btm start -->
+            <div class="product_rel clearfix">
+                <div class="prod_l">
+                    <p class="product_id" id="pro_code"><span>商品编号</span>6043103</p>
+                </div>
+                <p class="product_share" id="product_share" clstag="pageclick|keycount|product_201709214|8">
+                    <a class="share_tit" href="javascript:void(0);"><em class="iconDetail"></em>分享<i
+                            class="iconDetail"></i></a>
+                    <span class="sharelist clearfix">
+<a class="ico_sina" title="分享到新浪微博"
+   href="javascript:(function(){var%20rul=location.href;if(rul.indexOf('?')>0){rul%20=%20rul%20+'&amp;'}else{rul%20=%20rul%20+'?'};rul%20=%20rul%20+'tarcker_u=9402576';window.open('%20http://v.t.sina.com.cn/share/share.php?appkey=2794712645&amp;title='+encodeURIComponent('%E3%80%90%E3%80%9036%E7%9B%92%E8%A3%85%E3%80%91%E6%B3%95%E5%9B%BD%E5%8E%9F%E8%A3%85%E8%BF%9B%E5%8F%A3%20%E8%8D%B7%E5%85%B0%E4%B9%B3%E7%89%9B%E5%85%A8%E8%84%82%E7%BA%AF%E7%89%9B%E5%A5%B6200ml*36%20%E8%93%9D%E9%92%BB%E6%95%B4%E7%AE%B1%E8%A3%85%E3%80%91%EF%BC%8C1%E5%8F%B7%E5%BA%97%E8%AE%A9%E6%82%A8%E4%BA%AB%E5%8F%97%E6%97%A0%E5%BF%A7%E7%9A%84%E7%BD%91%E4%B8%8A%E8%B4%AD%E7%89%A9')+'&amp;ralateUid=1725229222&amp;url='+encodeURIComponent(rul),'_blank','width=615,height=505');})()">新浪微博</a>
+<a class="ico_qq" title="分享到腾迅微博" href="javascript:void(0)" onclick="detailUtil.posttoWb();">腾讯微博</a>
+</span>
+                </p>
+                <p class="collect">
+                    <a rel="collect" href="javascript:void(0);" id="product-collect">
+<span class="collect_icon">
+<i class="iconfont heart"></i>
+<i class="iconfont heart_active"></i>
+</span>
+                        <span class="collect_text">关注</span>
+                    </a>
+                </p>
+            </div>
+            <!-- btm end -->
+        </div>
+        <div class="main_content">
+            <div class="detail_information" id="jsModInformation">
+                <div class="mod_detailInfo_proName" id="detail_sku_main">
+                    <h1 class="mh" id="productMainName" title="{$field['title']}">
+                        <span class="self_icon" style="height: 52px;line-height: 25px;">自营</span>
+                       <span style="font-size: 30px;font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;{$field['title']}</span>
+                    </h1>
+                </div>
+                <p class="subhead" style="margin-left: 35px;">
+                <span class="sh">
+                {$field['content']}
+                </span>
+                </p>
+                <div class="mod_detailInfo_priceSales ">
+                    <div class="big_promo_box clearfix" style="display: none;" id="bigPromoBanner"></div>
+                    <div class="big_promo_box clearfix" style="display: none;" id="grouponTagBanner"></div>
+                    <div class="seckill_box clearfix none" id="oneRobBuyBanner">
+                        <a href="javascript:void(0);" target="_blank" class="logo_enter seckill_enter">1号抢购</a>
+                        <span class="start_time none" id="oneRobBuyStartTime"></span>
+                        <div class="countdown_box none" id="oneRobBuyContDown"></div>
+                    </div>
+                    <div class="mod_presell_tit" id="presellBanner" style="display: none;">
+                        <img src="/static/index/content_files/presellBarBg.png" alt="预售背景">
+                        <div class="tit">预售</div>
+                        <div class="info" id="presellNum" style="display: none;"></div>
+                        <span class="start_time" id="presellTime1"
+                              style="display: none;"><b>2017年12月12日</b>&nbsp;<b>20</b>:<b>20</b>&nbsp;开始付定金</span>
+                        <div class="countdown_box" id="presellTime2" style="display: none;"><em>12</em> 时 <em>57</em> 分
+                            <em>37</em> 秒后&nbsp;&nbsp;付定金结束
+                        </div>
+                    </div>
+                    <div class="mod_presellStep" style="display: none;" id="presellStep">
+                        <ol class="clearfix">
+                            <li class="clearfix">
+                                <b>1</b>
+                                <div class="step_des">
+                                    <p class="step_tit">支付定金</p>
+                                    <p id="step1"></p>
+                                </div>
+                                <i></i>
+                            </li>
+                            <li class="clearfix">
+                                <b>2</b>
+                                <div class="step_des">
+                                    <p class="step_tit">支付尾款</p>
+                                    <p id="step2"></p>
+                                </div>
+                                <i></i>
+                            </li>
+                            <li class="clearfix">
+                                <b>3</b>
+                                <div class="step_des">
+                                    <p class="step_tit">商家发货</p>
+                                    <p id="step3"></p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="mod_presell_price" style="display: none;">
+                        <div class="mod_presell_price_line clearfix" style="display: none;" id="presellEarnest">
+                            <div class="tit">定金</div>
+                            <div class="price"><em>¥</em>99.0</div>
+                            <div class="coupon" style="display: none;" id="presellExpAmount"><span></span></div>
+                            <div class="presell_intro" id="presellIntro1">预售说明<span class="iconDetail"></span>
+                                <div class="iconDetail-con"></div>
+                            </div>
+                        </div>
+                        <div class="mod_presell_price_line clearfix" style="display: none;" id="presellPrice">
+                            <div class="tit">到手价</div>
+                            <div class="price price_small"></div>
+                            <div class="hint"></div>
+                            <div class="presell_intro" style="display: none;" id="presellIntro2">预售说明<span
+                                    class="iconDetail"></span>
+                                <div class="iconDetail-con"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seckill_box clearfix" id="reserveBanner" style="display:none;">
+                        <a href="javascript:void(0);" class="logo_enter seckill_book">预约抢购</a>
+                        <span id="reserveBanner_rnum"></span>
+                        <span class="start_time" style="display:none;" id="reserveStartTime"></span>
+                        <div class="countdown_box" style="display:none;" id="reserveCountDown"></div>
+                    </div>
+                    <div class="mod_bookStep" id="reserveBanner_ext" style="display:none;">
+                        <!--更改step1，step2的class，来依次显示预约步骤-->
+                        <ol class="step1 clearfix">
+                            <li class="clearfix">
+                                <b>1</b>
+                                <div class="step_des">
+                                    <p class="step_tit">预约阶段</p>
+                                    <p id="reserveTimeRange"></p>
+                                </div>
+                                <i></i>
+                            </li>
+                            <li class="clearfix">
+                                <b>2</b>
+                                <div class="step_des">
+                                    <p class="step_tit">抢购阶段</p>
+                                    <p id="panicTimeRange"></p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <!--预约价格-S-->
+                    <div class="mod_book_price" style="display:none;" id="reservePriceArea">
+                        <div class="mod_book_price_line clearfix">
+                            <div class="tit" id="reserveCommonPriceLabel">价格</div>
+                            <div class="book_price" id="reserveCommonPrice"></div>
+                            <div class="book_hint" id="reserveOldPrice"></div>
+                            <div class="book_intro" id="reserveIntro">预约说明<span class="iconDetail"></span>
+                                <div class="iconDetail-con"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--预约价格-E-->
+                    <div class="popup book_popup">
+                        <div class="popup_box">
+                            <a class="popup_btn_close jsclose iconDetail"></a>
+                            <div class="popup_hint">
+                                <div class="popup_hint_con"><img src="/static/index/content_files/hint_orange.png">手机号为11位数
+                                </div>
+                            </div>
+                            <div class="pop_con">
+                                <div class="order_success_icon"></div>
+                                <h3 id="addReserveMsg"></h3>
+                                <div class="book_popup_detail" id="addReserveDetail">
+                                    <span class="book_popup_time" id="addReservePanicStartTime"></span>准时抢购，货源有限先到先得！
+                                </div>
+                                <div class="book_popup_detail">
+                                    查看预约商品请至：<span class="book_popup_gray">我的1号店--我的预约</span>
+                                </div>
+                                <div class="book_popup_btn clearfix">
+                                    <div class="btn_white btn"
+                                         onclick="window.open('//home.yhd.com/presell/getMyPresellList.do');">查看我的预约
+                                    </div>
+                                    <div class="btn_red jsclose btn">确定</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mask"></div>
+                    <div class="price pb0" id="currentPriceArea">
+                        <ul class="clearfix">
+                            <li class="tag" id="price_lable">
+                                价格
+                            </li>
+                            <li class="number inte_check">
+                                <span id="current_price">{$field['price']}</span>
+                            </li>
+                            <li class="pricing" id="bookprice"></li>
+                        </ul>
+                    </div>
+                    <ul class="Msgsales clearfix" id="msgsales">
+                        <li id="skuGoodCommentRate">
+<span class="hpl paise" style="">
+<a class="pl" onclick="detailPeExperience.forwardPL('p');" href="#sppj">
+<span class="iconDetail"></span>好评率<strong class="rate">99%</strong>
+</a>
+</span>
+                            <span class="pl paise_num" style="">
+<a class="pl" onclick="detailPeExperience.forwardPL('p');" href="#sppj">[评论<span class="yellow">6.5万+</span>条]</a>
+</span>
+                        </li>
+                    </ul>
+                    <div id="promoTag" style="display:none;" class="new-doing"></div>
+                </div>
+                <!-- 抵用券 实名认证 -->
+                <div class="promotionLayer">
+                    <div class="pop_bg realname_check">
+                        <div class="pop_panel">
+                            <a class="pop_btn_close jsclose iconDetail"></a>
+                            <div class="pop_container">
+                                <p>此优惠券需要实名认证</p>
+                            </div>
+                            <div class="pop_btn clearfix">
+                                <a class="cancel jsclose" href="javascript:;">放弃领券</a>
+                                <a id="go_realname" class="confirm" href="javascript:;">实名认证</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mod_detailInfo_tags _noborder" id="detailCoupon" style="display: block;">
+                    <dl class="suit clearfix">
+                        <dt>优惠券</dt>
+                        <dd id="coupon_dd_title_id">
+                            <div class="container-coupons-detail">
+                                <div class="_default">
+                                    <div class="_left">
+                                        <div class="_item">满188减10</div>
+                                        <div class="_item">满110减5</div>
+                                    </div>
+                                    <div class="_right" clstag="pageclick|keycount|product_201709214|31">
+                                        <span>领取优惠券</span> <i class="iconDetail"></i></div>
+                                </div>
+                                <div class="_default_active">
+                                    <div class="_left">领取优惠券</div>
+                                    <div class="_right">关闭</div>
+                                </div>
+                                <div id="couponListDiv_id" class="container-coupons-select">
+                                    <div id="unreceived_title" class="_title">可领券</div>
+                                    <ul id="ulUnreceived_id" class="_coupons_ul">
+                                        <li class="unreceived" id="vocher_item_0">
+                                            <div class="_money">￥10</div>
+                                            <div class="_condition">满188减10</div>
+                                            <div class="_status"><a name="coupon_action"
+                                                                    onclick="detailCoupon.checkVoucherCoupon('0');">立即领取</a>
+                                            </div>
+                                            <div class="_gap"></div>
+                                        </li>
+                                        <li class="unreceived" id="vocher_item_1">
+                                            <div class="_money">￥5</div>
+                                            <div class="_condition">满110减5</div>
+                                            <div class="_status"><a name="coupon_action"
+                                                                    onclick="detailCoupon.checkVoucherCoupon('1');">立即领取</a>
+                                            </div>
+                                            <div class="_gap"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+
+                <!--弹层背景蒙板-->
+                <div class="pop_win_mask" id="mask"></div>
+                <div id="realnameWarnDiv" class="mod_realname_warning" style="display:none">
+                    <i class="iconfont"></i>
+                    <span>购买商品需要实名认证，请<a id="needShiming" href="javascript:void(0);">登录认证</a></span>
+                </div>
+                <!-- 到货通知 -->
+                <div class="pop_bg getgoods" id="subscriberDiv">
+                    <div class="pop_panel">
+                        <a class="pop_btn_close jsclose iconDetail" id="subscriberCloseIcon"></a>
+                        <div class="pop_container" id="subscriberTitle">
+                            <p class="title">到货通知</p>
+                        </div>
+                        <p class="subtitle" id="subscriberContext">商品到货后，我们将通过短信通知您！</p>
+                        <div class="getgoods-main">
+                            <!--<span class="empty-icon"></span>-->
+                            短信通知：
+                            <input id="subscriberPhone" class="err" placeholder="请输入11位手机号码" type="text">
+                            <div class="getgoods-remain" id="inputWarn" style="display: none">
+                                <i class="icon iconDetail"></i>
+                                请您输入11位数字手机号码
+                                <span id="triangle-up"></span>
+                            </div>
+                        </div>
+                        <div class="pop_btn clearfix">
+                            <a class="confirm jsclose" href="javascript:;" id="storeSubBtn">确定</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup priceNotice" style="display: none">
+                    <div class="popup_box">
+                        <a class="popup_btn_close jsclose iconDetail" href="javascript:;"></a>
+                        <div class="heading">降价通知</div>
+                        <div class="popup_con_f1">
+                            <p class="priceNotice_tit">若商品在90天内降价，我们将通过站内信和短信通知您！</p>
+                            <p class="priceNotice_nowprice">当前价格：<b class="nowprice_num"></b>
+                            </p>
+                            <p class="priceNotice_goods">期望价格：
+                                <span class="input_container">
+¥<input placeholder="请输入期望价格" type="text">
+<b class="priceNotice_error" style="display: none"><i class="iconDetail"></i>输入的期望价格必须低于当前售价<strong
+        class="error_down_sku"></strong></b>
+</span>
+                            </p>
+                            <p class="priceNotice_num">短信通知：
+                                <span class="priceNotice_num_con">
+<span class="input_container">
+<input placeholder="请输入11位手机号码" type="text">
+<b class="priceNotice_error" style="display: none"><i class="iconDetail"></i>请输入正确的手机号码<strong
+        class="error_down_sku"></strong></b>
+</span>
+</span>
+                            </p>
+                        </div>
+                        <div class="priceNotice_popup_btn clearfix">
+                            <a class="confirm" href="javascript:;">确认</a>
+                        </div>
+                    </div>
+                </div>
+
+
+<!----------------------商品规格------------------------------->
+                <div class="category"
+                     style="
+                         margin-top: 30px;
+                         overflow: hidden;
+                        color: #666;
+                        font-weight: 100;
+                        width: 100px;
+                        line-height: 40px;
+                        font-size: 14px;"
+                >
+                    <h4 style="float: left"><strong>商品规格</strong>&nbsp&nbsp&nbsp</h4>
+                    <style>
+
+                        .lin-specs{
+                            display:inline-block;
+                            float: left;
+                            padding: 0 20px;
+                            margin-right: 5px;
+                            height: 40px;
+                            text-align: center;
+                            line-height: 40px;
+                            border: 1px solid #f1f1f1;
+                            cursor: pointer;
+                        }
+                        .ge{
+                            border: 1px solid #e60021;
+                        }
+                    </style>
+                    <ul style="float: left;">
+                        {foreach $field->goods_spec()->select() as $v}
+                        <li class=" lin-specs">
+                            {$v->spec_tit}
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+ <!-----------------------商品数量------------------------------>
+                <style>
+                    :hover a{
+                        text-decoration: none;
+                    }
+                    .num{
+                        clear: both;
+                        margin-top: 20px;
+                        overflow: hidden;
+                    }
+                    .num h5{
+                        float: left;
+                        color: #848484;
+                        font-weight: 300;
+                        width: 100px;
+                        line-height: 30px;
+                        font-size: 14px;
+                    }
+                    .num_l{
+                        display: block;
+                        width: 30px;
+                        height: 30px;
+                        text-align: center;
+                        line-height: 30px;
+                        text-decoration: none;
+                        float: left;
+                        font-size: 25px;
+                        border: 1px solid #CCC;
+                    }
+                    .num input{
+                        float: left;
+                        height: 30px;
+                        border: none;
+                        border-top: 1px solid #ccc;
+                        border-bottom: 1px solid #ccc;
+                        background: #fff;
+                        width: 40px;
+                        text-align: center;
+                    }
+                    .num_r{
+                        display: block;
+                        width: 30px;
+                        height: 30px;
+                        text-align: center;
+                        line-height: 30px;
+                        float: left;
+                        text-decoration: none;
+                        font-size: 20px;
+                        border: 1px solid #CCC;
+                    }
+                </style>
+                <div class="num">
+                    <h5>
+                        <strong>数量</strong></h5>
+                    <a href="javascript:;" class="num_l">-</a>
+                    <input type="text" value="1"/>
+                    <a href="javascript:;" class="num_r">+</a>
+                </div>
+
+                <script>
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    })
+                    $(function () {
+                        //购买数量,减
+                        $('.num_l').on('click', function () {
+                            //1.抓到元素值
+                            var num = $(this).siblings('input').val();
+                            //2.自减
+                            num--;
+                            //3.再把值写会原来位置
+                            $(this).siblings('input').val(num);
+                            var sid = $(this).parents('.shopnum').attr('sid');
+                            //alert(sid);
+                            var data = {
+                                num: $(this).siblings('input').val(),
+                                sid: sid,
+                            }
+                        });
+                        //购买数量,加
+                        $('.num_r').on('click', function () {
+                            var res = $(this).parent().find('.shopnum').text();
+                            // alert(res);
+                            // var _this=$(this);
+                            var num = $(this).siblings('input').val();
+                            num++;
+                            $(this).siblings('input').val(num);
+                            // alert(num);
+                            var sid = $(this).parents('.shopnum').attr('sid');
+                            var data = {
+                                num: $(this).siblings('input').val(),
+                                sid: sid,
+                            }
+                            console.log(res);
+
+                        });
+                    })
+
+                </script>
+
+                <div class="mod_favlist" id="noGoodscommand" style="display:none;" data-tpa="DATAIL_NO_GOODS_RECOMMAND"
+                     clstag="pageclick|keycount|product_201709214|18"></div>
+                <dl class="mod_detailInfor_ensure clearfix" id="serviceGuarantee">
+                    <dt>保障</dt>
+                    <dd class="clearfix">
+                        <div id="payServiceList">
+                            <a id="7dayReturnTag" href="javascript:void(0);" style="" title="不支持7天无理由退货"><i
+                                    class="iconDetail"></i>不支持7天无理由退货</a>
+                            <a href="javascript:void(0);" style="" title="正品保障"><i class="iconDetail"></i>正品保障</a>
+                        </div>
+                    </dd>
+                </dl>
+                <!---------------------立即购买-------------------->
+
+                <style>
+                    .disable{
+                        opacity: 0.5;
+                    }
+                    .disable:hover a{
+                        background: #ff6c5a;!important;
+                    }
+                    h6{
+                     width: 200px;
+                    line-height: 40px;
+                    height: 40px;
+                    text-align: center;
+                    border-radius: 4px;
+                    font-weight: 300;
+                    font-size: 20px;
+                    margin: 49px auto;
+                    }
+                    #gobuy{
+                        background: #fc3a29;
+                        color: #ffffff;
+                        width: 130px;
+                        height: 50px;
+                        line-height: 2;
+                        font-size: 22px;
+                        font-weight: 500;
+                        text-decoration:none;
+                    }
+                </style>
+                <div class="nobdr">
+                    <h6 class="disable" ><a id="gobuy" href="javascript:;" class="btn btn-danger">立即购买</a></h6>
+                </div>
+                <script>
+                    $('.lin-specs').click(function () {
+                        // console.log($(this))
+                        $(this).addClass('ge');
+                        $(this).sibling('.lin-specs').removeClass('ge');
+                    })
+                    $('#gobuy').click(function () {
+                        if($('.ge').length < 1){
+                            // layer.msg('请先选择规格');
+                            alert('请先选择规格');
+                            // alert(333);
+                            // layer.alert('请先选择规格',{icon:3});
+                            return;
+                        }
+                        data = {
+                            id:{$field['id']},
+                            num:$('.num input').val(),
+                            spec:$('.ge').text(),
+                        };
+                        //$.post("请求地址","请求数据",'callback','返回数据格式');
+                        $.post("{:url('addCart')}",data,function (res) {
+                            location.href = "{:url('index/cart/index')}"
+                        },'json');
+                    })
+
+                </script>
+
+
+
+
+                <!------------------------------------------------>
+
+
+            </div>
+        </div>
+        <div class="r" id="r_mod" style="">
+            <div class="mod_change" id="r_mod_change">
+                <div class="cha_t">看了还看<a clstag="pageclick|keycount|product_201709214|12" href="javascript:void(0);"
+                                          id="r_cha_t"><span class="iconDetail"></span>换一批</a></div>
+                <ul clstag="pageclick|keycount|product_201709214|13" class="cha_m" id="r_cha_m">
+                    <li data-needreflushtype="0" skuid="1385736"><a class="chaImg" target="_blank"
+                                                                    href="http://item.yhd.com/1385736.html"><img
+                            src="/static/index/content_files/5aaa3156N4d21f895_002.jpg" height="120" width="120"></a>
+                        <p class="cha_tit"><a target="_blank" title="德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶200ml*24盒"
+                                              href="http://item.yhd.com/1385736.html">德国DMK进口牛奶
+                            欧德堡（Oldenburger）超高温处理全脂纯牛奶200ml*24盒</a></p>
+                        <p class="cha_price"><a target="_blank" href="http://item.yhd.com/1385736.html">¥<span
+                                class="j_price">69.00</span></a></p></li>
+                    <li data-needreflushtype="0" skuid="2658756"><a class="chaImg" target="_blank"
+                                                                    href="http://item.yhd.com/2658756.html"><img
+                            src="/static/index/content_files/59fff200Nc46dce4f_002.jpg" height="120" width="120"></a>
+                        <p class="cha_tit"><a target="_blank" title="法国原装进口 荷兰乳牛全脂纯牛奶1L*6 整箱  3.5g/100ml乳蛋白"
+                                              href="http://item.yhd.com/2658756.html">法国原装进口 荷兰乳牛全脂纯牛奶1L*6 整箱
+                            3.5g/100ml乳蛋白</a></p>
+                        <p class="cha_price"><a target="_blank" href="http://item.yhd.com/2658756.html">¥<span
+                                class="j_price">59.00</span></a></p></li>
+                    <li data-needreflushtype="0" skuid="1857014"><a class="chaImg" target="_blank"
+                                                                    href="http://item.yhd.com/1857014.html"><img
+                            src="/static/index/content_files/57fdf859N2f3f8dd7.jpg" height="120" width="120"></a>
+                        <p class="cha_tit"><a target="_blank" title="德国 进口牛奶 Arla爱氏晨曦 全脂牛奶 200ml*24 整箱装"
+                                              href="http://item.yhd.com/1857014.html">德国 进口牛奶 Arla爱氏晨曦 全脂牛奶 200ml*24
+                            整箱装</a></p>
+                        <p class="cha_price"><a target="_blank" href="http://item.yhd.com/1857014.html">¥<span
+                                class="j_price">52.00</span></a></p></li>
+                </ul>
+            </div>
+        </div>
+    </div> <!--第二屏文描及其他框架-->
+    <div class="fm_detail_two laymt clearfix">
+        <div class="grid_4"><!--s 店铺动态评分-->
+
+            <!--s 自营-->
+            <div class="mod_box mod_inshop_DSR self_support_enter" clstag="pageclick|keycount|product_201709214|14">
+                <div class="box_hd">
+                    <p class="shop_name clearfix">
+                        <strong>
+                            <a href="http://mall.yhd.com/index-1000015587.html" target="_blank" title="荷兰乳牛自营旗舰店">
+                                荷兰乳牛自营旗舰店
+                            </a>
+                            <em class="selfSupportIcon"></em>
+                        </strong>
+                    </p>
+                </div>
+                <div class="box_bd">
+                    <div class="dsr_online clearfix" id="storeWelcome">
+                        <div class="dsr_online_box focus_num" title="荷兰乳牛自营旗舰店欢迎您">
+                            荷兰乳牛自营旗舰店欢迎您
+                        </div>
+                    </div>
+                    <div class="inshow_btn">
+                        <a href="http://mall.yhd.com/index-1000015587.html" target="_blank" class="in_shop">进入店铺</a>
+                    </div>
+                </div>
+            </div>
+            <!--e 自营-->
+
+
+            <div id="leftLazyLoad"></div>
+            <div id="detail_viewAndBuyRecomm" style="" class="mod_box mod_product_box"
+                 clstag="pageclick|keycount|product_201709214|15">
+                <div class="box_hd"><strong>看了本商品的用户最终购买了</strong></div>
+                <div class="box_list">
+                    <ul>
+                        <li data-needreflushtype="0" skuid="6050272"><a class="pro_img"
+                                                                        href="http://item.yhd.com/6050272.html"
+                                                                        target="_blank"
+                                                                        title="法国原装进口 荷兰乳牛全脂纯牛奶200ml*6 经典轻享装"><img
+                                src="/static/index/content_files/5a4c98f8N4e22a55d.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/6050272.html"
+                                                  title="法国原装进口 荷兰乳牛全脂纯牛奶200ml*6 经典轻享装" target="_blank">法国原装进口
+                                荷兰乳牛全脂纯牛奶200ml*6 经典轻享装</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">19.90</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/6050272.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="1857014"><a class="pro_img"
+                                                                        href="http://item.yhd.com/1857014.html"
+                                                                        target="_blank"
+                                                                        title="德国 进口牛奶 Arla爱氏晨曦 全脂牛奶 200ml*24 整箱装"><img
+                                src="/static/index/content_files/57fdf859N2f3f8dd7_002.jpg" height="115"
+                                width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/1857014.html"
+                                                  title="德国 进口牛奶 Arla爱氏晨曦 全脂牛奶 200ml*24 整箱装" target="_blank">德国 进口牛奶
+                                Arla爱氏晨曦 全脂牛奶 200ml*24 整箱装</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">52.00</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/1857014.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="2658756"><a class="pro_img"
+                                                                        href="http://item.yhd.com/2658756.html"
+                                                                        target="_blank"
+                                                                        title="法国原装进口 荷兰乳牛全脂纯牛奶1L*6 整箱  3.5g/100ml乳蛋白"><img
+                                src="/static/index/content_files/59fff200Nc46dce4f.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/2658756.html"
+                                                  title="法国原装进口 荷兰乳牛全脂纯牛奶1L*6 整箱  3.5g/100ml乳蛋白" target="_blank">法国原装进口
+                                荷兰乳牛全脂纯牛奶1L*6 整箱 3.5g/100ml乳蛋白</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">59.00</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/2658756.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="1385736"><a class="pro_img"
+                                                                        href="http://item.yhd.com/1385736.html"
+                                                                        target="_blank"
+                                                                        title="德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶200ml*24盒"><img
+                                src="/static/index/content_files/5aaa3156N4d21f895.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/1385736.html"
+                                                  title="德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶200ml*24盒"
+                                                  target="_blank">德国DMK进口牛奶 欧德堡（Oldenburger）超高温处理全脂纯牛奶200ml*24盒</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">69.00</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/1385736.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="4779821"><a class="pro_img"
+                                                                        href="http://item.yhd.com/4779821.html"
+                                                                        target="_blank"
+                                                                        title="法国原装进口 荷兰乳牛全脂纯牛奶200ml*6 蓝钻轻享迷你装"><img
+                                src="/static/index/content_files/5aab2929Na2f2452c.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/4779821.html"
+                                                  title="法国原装进口 荷兰乳牛全脂纯牛奶200ml*6 蓝钻轻享迷你装" target="_blank">法国原装进口
+                                荷兰乳牛全脂纯牛奶200ml*6 蓝钻轻享迷你装</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">19.90</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/4779821.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="1070843"><a class="pro_img"
+                                                                        href="http://item.yhd.com/1070843.html"
+                                                                        target="_blank"
+                                                                        title="新西兰原装进口牛奶 安佳Anchor全脂牛奶UHT纯牛奶250ml*24 整箱装"><img
+                                src="/static/index/content_files/5a14e79eN657d5ee1.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/1070843.html"
+                                                  title="新西兰原装进口牛奶 安佳Anchor全脂牛奶UHT纯牛奶250ml*24 整箱装" target="_blank">新西兰原装进口牛奶
+                                安佳Anchor全脂牛奶UHT纯牛奶250ml*24 整箱装</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">89.00</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/1070843.html">查看详情</a>
+                            </p></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="detail_buyAndBuyRecomm" style="" class="mod_box mod_product_box"
+                 clstag="pageclick|keycount|product_201709214|16">
+                <div class="box_hd"><strong>购买了此商品的用户还买了</strong></div>
+                <div class="box_list">
+                    <ul>
+                        <li data-needreflushtype="0" skuid="6050272"><a class="pro_img"
+                                                                        href="http://item.yhd.com/6050272.html"
+                                                                        target="_blank"
+                                                                        title="法国原装进口 荷兰乳牛全脂纯牛奶200ml*6 经典轻享装"><img
+                                src="/static/index/content_files/5a4c98f8N4e22a55d.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/6050272.html"
+                                                  title="法国原装进口 荷兰乳牛全脂纯牛奶200ml*6 经典轻享装" target="_blank">法国原装进口
+                                荷兰乳牛全脂纯牛奶200ml*6 经典轻享装</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">19.90</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/6050272.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="4779821"><a class="pro_img"
+                                                                        href="http://item.yhd.com/4779821.html"
+                                                                        target="_blank"
+                                                                        title="法国原装进口 荷兰乳牛全脂纯牛奶200ml*6 蓝钻轻享迷你装"><img
+                                src="/static/index/content_files/5aab2929Na2f2452c.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/4779821.html"
+                                                  title="法国原装进口 荷兰乳牛全脂纯牛奶200ml*6 蓝钻轻享迷你装" target="_blank">法国原装进口
+                                荷兰乳牛全脂纯牛奶200ml*6 蓝钻轻享迷你装</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">19.90</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/4779821.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="2658756"><a class="pro_img"
+                                                                        href="http://item.yhd.com/2658756.html"
+                                                                        target="_blank"
+                                                                        title="法国原装进口 荷兰乳牛全脂纯牛奶1L*6 整箱  3.5g/100ml乳蛋白"><img
+                                src="/static/index/content_files/59fff200Nc46dce4f.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/2658756.html"
+                                                  title="法国原装进口 荷兰乳牛全脂纯牛奶1L*6 整箱  3.5g/100ml乳蛋白" target="_blank">法国原装进口
+                                荷兰乳牛全脂纯牛奶1L*6 整箱 3.5g/100ml乳蛋白</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">59.00</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/2658756.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="4470996"><a class="pro_img"
+                                                                        href="http://item.yhd.com/4470996.html"
+                                                                        target="_blank"
+                                                                        title="力大狮 Lactasoy 原味豆奶 125ml*6盒 泰国进口 营养早餐 豆奶"><img
+                                src="/static/index/content_files/5955bf74Nccd5ae67.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/4470996.html"
+                                                  title="力大狮 Lactasoy 原味豆奶 125ml*6盒 泰国进口 营养早餐 豆奶" target="_blank">力大狮
+                                Lactasoy 原味豆奶 125ml*6盒 泰国进口 营养早餐 豆奶</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">12.50</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/4470996.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="1857014"><a class="pro_img"
+                                                                        href="http://item.yhd.com/1857014.html"
+                                                                        target="_blank"
+                                                                        title="德国 进口牛奶 Arla爱氏晨曦 全脂牛奶 200ml*24 整箱装"><img
+                                src="/static/index/content_files/57fdf859N2f3f8dd7_002.jpg" height="115"
+                                width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/1857014.html"
+                                                  title="德国 进口牛奶 Arla爱氏晨曦 全脂牛奶 200ml*24 整箱装" target="_blank">德国 进口牛奶
+                                Arla爱氏晨曦 全脂牛奶 200ml*24 整箱装</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">52.00</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/1857014.html">查看详情</a>
+                            </p></li>
+                        <li data-needreflushtype="0" skuid="1385736"><a class="pro_img"
+                                                                        href="http://item.yhd.com/1385736.html"
+                                                                        target="_blank"
+                                                                        title="德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶200ml*24盒"><img
+                                src="/static/index/content_files/5aaa3156N4d21f895.jpg" height="115" width="115"></a>
+                            <p class="pro_tit"><a href="http://item.yhd.com/1385736.html"
+                                                  title="德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶200ml*24盒"
+                                                  target="_blank">德国DMK进口牛奶 欧德堡（Oldenburger）超高温处理全脂纯牛奶200ml*24盒</a></p>
+                            <p class="pro_price"><span class="color_red">¥<span class="j_price">69.00</span></span><a
+                                    class="commandbtn" target="_blank" href="http://item.yhd.com/1385736.html">查看详情</a>
+                            </p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="grid_18">
+            <div id="centerLazyLoad"></div>
+            <dl id="detail_hot10Recomm" class="recommnad explosion clearfix" style="display: none"
+                clstag="pageclick|keycount|product_201709214|17">
+            </dl>
+            <div class="des_fixed" id="J_fixedDes" style="display: none;">
+                <div class="layout_wrap">
+                    <div class="des">
+                        <div class="des_search fl" clstag="pageclick|keycount|product_201709214|14">
+                            <div class="shopdsr clearfix">
+                                <p class="shopdsr_name">
+                                    <a href="http://mall.yhd.com/index-1000015587.html" title="
+                        荷兰乳牛自营旗舰店
+                    " id="detail_desc_shopname_fixed" target="_blank">
+                                        荷兰乳牛自营旗舰店
+                                    </a>
+                                </p>
+                                <p class="shopdsr_online self_support_enter">
+                                    <em class="selfSupportIcon"></em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="descLazyLoad"></div>
+            <div class="des" id="J_des">
+                <ul class="des_tab">
+                    <li class="des_tabbox" id="detail_desc_tab">
+                        <a clstag="pageclick|keycount|product_201709214|19" tabindex="0" href="javascript:void(0);"
+                           class="tab cur" id="spjs">商品介绍</a>
+                        <a clstag="pageclick|keycount|product_201709214|20" tabindex="3" href="javascript:void(0);"
+                           class="tab" id="sppj">评价<em>&nbsp;&nbsp;6.5万+</em></a>
+                        <a clstag="pageclick|keycount|product_201709214|21" tabindex="1" href="javascript:void(0);"
+                           class="tab" id="ggbz">规格及包装</a>
+                        <a clstag="pageclick|keycount|product_201709214|22" tabindex="2" href="javascript:void(0);"
+                           class="tab" id="shfw">售后服务</a>
+                    </li>
+                </ul>
+                <div class="descon" id="detail_desc_content">
+                    <div id="prodDescTabContent">
+                        <div tabindex="0" class="desitem" style="display:block" id="prodDetailCotentDiv">
+                            <dl class="des_info clearfix">
+                                <dt>
+                                    规格参数
+                                    <a id="medica_record" class="medica_record" href="" target="_blank"></a>
+                                    <a clstag="pageclick|keycount|product_201709214|23" href="javascript:void(0)"
+                                       onclick="detailProdDesc.onGuigeTabSwitchEvent();" class="s_standard_more">查看更多
+                                        »</a>
+                                </dt>
+                                <dd title="品牌：荷兰乳牛">品牌：荷兰乳牛</dd>
+                                <dd title="商品名称：【36盒装】法国原装进口 荷兰乳牛全脂纯牛奶200ml*36 蓝钻整箱装">商品名称：【36盒装】法国原装进口
+                                    荷兰乳牛全脂纯牛奶200ml*36 蓝钻整箱装
+                                </dd>
+                                <dd title="商品编号：6043103">商品编号：6043103</dd>
+                                <dd title="商品毛重：8.54kg">商品毛重：8.54kg</dd>
+                                <dd title="商品产地：中国大陆">商品产地：中国大陆</dd>
+                                <!-- 扩展属性 -->
+                            </dl>
+                            <!-- 文描区域 -->
+                            <div class="mod_des">
+                                <div class="desbox">
+                                    <br>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8dee3N09775320.jpg" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <br>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36dNbbb6375b.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36dN5f810e35.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36fN6bdf709c.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36cNf30c9e4a.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36dNd42a53f0.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36eN53fdc03b.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36eN0cdadb41.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36fN30efb71d.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f370Nc07cdf81.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f36fNea118548.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f371N66ba1e1c.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f372Nb851af7e.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f371Nb58d0cba.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f371Nb040ecbb.jpg" id="1" alt="">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <img src="/static/index/content_files/5aa8f371Nc8bc6b91.jpg" id="1" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 规格及包装tab内容 -->
+                        <div tabindex="1" class="desitem desqoute" id="detail_desc_prop" style="display:none">
+                            <dl class="standard">
+                                <dt>主体</dt>
+                                <dd><label>类别</label>纯牛奶</dd>
+                                <dd><label>特性</label>全脂</dd>
+                                <dd><label>配料</label>生牛乳</dd>
+                                <dd><label>净含量</label>7.2L</dd>
+                                <dd><label>保质期</label>365天</dd>
+                                <dd><label>储存方法</label>阴凉干燥处</dd>
+                            </dl>
+                            <p class="tit mt">包装清单</p>
+                            <p class="con">200ml*36支</p></div>
+                    </div>
+                    <div class="desitem desqoute" id="detail_desc_fwcl">
+                        <p class="tit">1号店承诺</p>
+                        <p class="con">1号店平台卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！<br>注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若没有及时更新，请大家谅解！
+                        </p>
+                        <p class="tit">全国联保</p>
+                        <p class="con">
+                            凭质保证书及1号店发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由1号店联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。1号店还为您提供具有竞争力的商品价格和运费政策，请您放心购买！</p>
+                        <p class="tit">权利声明</p>
+                        <p class="con">1号店上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是1号店重要的经营资源，未经许可，禁止非法转载使用。<br>注：本站商品信息均来自于合作方，其真实性、准确性和合法性由信息拥有者（合作方）负责。本站不提供任何保证，并不承担任何法律责任。
+                        </p>
+                        <p class="tit">价格说明</p>
+                        <p class="con"><strong>1号店价：</strong>商品在1号店平台上，不参加降价让利促销团购等活动时的常规销售价格。<br><strong>参考价：</strong>商
+                            品展示的参考价，可能是品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价（如厂商指导价、建议零售价等）或该商品在1号店平台曾经展示过的销售
+                            价；由于地区、时间的差异性和市场行情波动，品牌专柜标价、商品吊牌价、销售商门店曾经展示过的销售价等可能会与您购物时展示的不一致，该价格仅供您参
+                            考。<br><strong>问题反馈：</strong>如有疑问，建议您在购买前联系客服咨询。</p></div>
+                </div>
+            </div>
+            <div class="clearfix" id="buyer_experience">
+                <div id="productExperience" name="productExperience" class="tab"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--content end-->
+<div class="ft_wrap">
+    <div id="globalBottomBrowseRelated" data-recordtracker="1"></div>
+    <div class="wrap ft_footer_service clearfix" id="footerIcon" data-tpa="YHD_GLOBAl_FOOTERICON">
+        <a target="_blank">
+            <img alt="" src="/static/index/content_files/CgQI0lWskgmADBnsAAAPZvcSh3E68900.jpg">
+            <b>正品保障</b>
+            <span>正品行货 放心选购</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="/static/index/content_files/ChEbulWsk4iADa_aAAAM544hHN818600.jpg">
+            <b>满86包邮</b>
+            <span>满86元 免运费</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="/static/index/content_files/CgQIz1WslI-Adao3AAAN5b_ut2I80100.jpg">
+            <b>售后无忧</b>
+            <span>7天无理由退货</span>
+        </a>
+        <a target="_blank">
+            <img alt="" src="/static/index/content_files/ChEi11WsyiyALBbiAAAN9lEEK5M33200.jpg">
+            <b>准时送达</b>
+            <span>收货时间由你做主</span>
+        </a>
+    </div>
+    <div class="wrap ft_service_link clearfix">
+        <div id="bottomHelpLinkId" class="ft_help_list clearfix" data-tpa="YHD_GLOBAl_FOOTER_HELP">
+            <dl>
+                <dt>新手入门</dt>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=12" target="_blank">购物流程</a></dd>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=17" target="_blank">会员制度</a></dd>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=38" target="_blank">订单查询</a></dd>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=36" target="_blank">发票制度</a></dd>
+                <dd><a href="http://seo.yhd.com/sitelink/sitemap.html" target="_blank">网站地图</a></dd>
+            </dl>
+            <dl>
+                <dt>支付方式</dt>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=25" target="_blank">货到付款</a></dd>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=26" target="_blank">网上支付</a></dd>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=28" target="_blank">礼品卡支付</a></dd>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=29" target="_blank">其它支付</a></dd>
+            </dl>
+            <dl>
+                <dt>配送服务</dt>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=21" target="_blank">配送进度查询</a></dd>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=20" target="_blank">商品验货与签收</a></dd>
+            </dl>
+            <dl>
+                <dt>售后保障</dt>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=31" target="_blank">退换货政策</a></dd>
+                <dd><a href="http://cms.yhd.com/cms/view.do?topicId=43" target="_blank">联系客服</a></dd>
+            </dl>
+        </div>
+        <!--footer 二维码 begin -->
+        <div class="ft_code_wrap clearfix" data-tpa="YHD_GLOBAl_HEADER_MOBILE" id="footerQRcode">
+            <div class="ft_mobile_code clearfix">
+                <p>APP更优惠</p>
+                <a href="http://app.yhd.com/" target="_blank">
+                    <img src="/static/index/content_files/qryhd_002.png" alt="APP更优惠二维码">
+                </a>
+            </div>
+            <div class="ft_mobile_code clearfix">
+                <p>加微信查订单</p>
+                <img src="/static/index/content_files/5a2798bbN479da3df.jpg" alt="加微信查订单二维码">
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p class="ft_footer_link">
+        </p>
+        <p class="ft_footer_link">
+            <a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备16050468号</a>
+            |
+            <a href="http://cms.yhd.com/cms/view.do?topicId=16" target="_blank">经营证照</a>
+            |
+            <a href="http://d9.yihaodianimg.com/N10/M05/00/A9/ChEi2lkQGRaAfaeeAAIhVwT2TYo18400.jpg" target="_blank">互联网药品信息服务资格证</a>
+            |
+            <a target="_blank">违法和不良信息举报电话：0527-88100253</a>
+            |
+            <a href="http://d9.yihaodianimg.com/N11/M04/76/1C/ChEwoVnfFfeAfzKUAAg9urXNqaA12000.jpg" target="_blank">沪B2-20170039</a>
+            |
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010502002939" target="_blank">沪公网安备
+                31010502002939号</a>
+            |
+            <a href="http://seo.yhd.com/sitelink/sitelink.html" target="_blank">友情链接</a>
+        </p>
+        <p>Copyright© 1号店网上超市 2007-2017，All Rights Reserved</p>
+        <small id="footerbanner2LazyLoad" class="ft_pic_link">
+            <a href="http://net.china.com.cn/index.htm" target="_blank">
+                <img alt="" src="/static/index/content_files/CgQCr1PQy1CAF7vaAABDexsiEYM24800.jpg">
+            </a>
+            <a href="http://shwg.dianping.com/index.html" target="_blank">
+                <img alt="" src="/static/index/content_files/ChEi1VcfPl2AC1T8AAANFrEfJlw97300.jpg">
+            </a>
+            <a href="http://www.shjbzx.cn/" target="_blank">
+                <img alt="" src="/static/index/content_files/ChEi2lh171KAJrGlAAALl_uZt0E75600.jpg">
+            </a>
+            <a href="https://search.szfw.org/cert/l/CX20150608010268010812" target="_blank">
+                <img alt="" src="/static/index/content_files/ChEi1FYXHcOAVk_WAAAL2r2-yfo10200.jpg">
+            </a>
+            <a href="https://ss.knet.cn/verifyseal.dll?sn=e13050631010040492h5mq000000&amp;ct=df&amp;a=1&amp;pa=500267"
+               target="_blank">
+                <img alt="" src="/static/index/content_files/CgQCrlPYTqCASlHXAAAd82JE0eA31000.png">
+            </a>
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010502002939" target="_blank">
+                <img alt="" src="/static/index/content_files/5a706bb1Ne3eec0dd.png">
+            </a>
+        </small>
+    </div>
+</div>
+<!--js start-->
+<!--无页面级头部js时, 全局头部js下移-->
+<!--<script type="text/javascript" src="/static/index/content_files/global_base_top.js" charset="utf-8"></script>-->
+<!--<script type="text/javascript" src="/static/index/content_files/productDetail.js" charset="utf-8"></script>-->
+<!--<script type="text/javascript" src="/static/index/content_files/synccookiepc.js" charset="utf-8"></script>-->
+
+
+
+<div id="prismWrap" class="yhd_prism_wrap">
+    <div class="prism_top_ad">
+        <div class="prism_nav_tab" data-type="adv" id="prismTopAdv"></div>
+    </div>
+    <div class="yhd_prism_nav">
+        <div class="prism_nav_center">
+            <div class="prism_nav_tab prism_icon_wrap" clstag="" data-type="icon" id="prismPerson"><a
+                    href="http://home.yhd.com/myyhdindex/index.do" target="_blank"><span class="prism_icon_tab"><em
+                    class="prism_iconfont"></em></span><u class="prism_icon_text">个人中心</u></a></div>
+            <div class="prism_nav_tab prism_cart_wrap" clstag="pageclick|keycount|lengjing_201709227|2" data-type="cart"
+                 id="prismCart"><a class="prism_cart_tab" href="http://cart.yhd.com/cart/cart.do" target="_blank"><em
+                    class="prism_iconfont"></em>
+                <div class="prism_cart_text">购物车</div>
+                <p id="prismCartNum" class="prism_cart_num"><u>3</u></p></a></div>
+            <div class="prism_nav_tab prism_icon_wrap" clstag="pageclick|keycount|lengjing_201709227|3" data-type="icon"
+                 id="prismCoupon"><a href="http://coupon.yhd.com/myCoupon" target="_blank"><span class="prism_icon_tab"><em
+                    class="prism_iconfont"></em></span><u class="prism_icon_text">抵用券</u></a></div>
+        </div>
+        <div class="prism_nav_btm">
+            <div class="prism_nav_tab prism_icon_wrap" clstag="" data-type="icon" id="prismIm" style="display: none;"><a
+                    href="javascript:;"><span class="prism_icon_tab"><em class="prism_iconfont"></em></span><u
+                    class="prism_icon_text">咨询客服</u></a></div>
+            <div class="prism_nav_tab prism_icon_wrap" clstag="pageclick|keycount|lengjing_201709227|5" data-type="icon"
+                 id="prismFeedback"><a href="http://cms.yhd.com/cms/view.do?topicId=43" target="_blank"><span
+                    class="prism_icon_tab"><em class="prism_iconfont"></em></span><u
+                    class="prism_icon_text">用户反馈</u></a></div>
+            <div class="prism_nav_tab prism_icon_wrap" clstag="pageclick|keycount|lengjing_201709227|6" data-type="icon"
+                 id="prismQRCode" style="display: block;"><a href="javascript:;"><span class="prism_icon_tab"><em
+                    class="prism_iconfont"></em></span><u class="prism_icon_text none">二维码</u></a>
+                <div class="prism_tips_wrap prism_yhd_code none"><p style="text-align:center;"><br>手机购物更优惠</p><img
+                        src="/static/index/content_files/qryhd.png"><em class="tips_arrow"></em></div>
+            </div>
+            <div class="prism_nav_tab prism_icon_wrap" clstag="pageclick|keycount|lengjing_201709227|7" data-type="icon"
+                 id="prismBacktop"><a href="javascript:;"><span class="prism_icon_tab"><em class="prism_iconfont"></em></span><u
+                    class="prism_icon_text">返回顶部</u></a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
